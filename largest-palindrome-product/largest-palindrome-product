@@ -1,0 +1,26 @@
+/*
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+Find the largest palindrome made from the product of two 3-digit numbers.
+*/
+
+// helper function to check if number is palindrome
+const numIsPalindrome = (num) => {
+  // convert number to string
+  let stringNum = num + '';
+  // turn the number in to array, then revers the aray then join and convert it to Number
+  stringNum = Number(stringNum.split('').reverse().join(''));
+  // check if stringNum still equal to num
+  return stringNum === num ? true: false;
+};
+console.log(numIsPalindrome(123321))
+
+const largestPalindromeProduct = (digit) => {
+  // create a storage
+  let storage = [ ];
+  // create a num1
+  let num1 = 0;
+  // create a num2
+  let num2 = 0;
+
+};
