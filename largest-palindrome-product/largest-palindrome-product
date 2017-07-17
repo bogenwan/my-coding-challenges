@@ -6,21 +6,35 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 // helper function to check if number is palindrome
 const numIsPalindrome = (num) => {
-  // convert number to string
+  if (num === 0 || String(num).length <= 1) {
+    return false;
+  }
   let stringNum = num + '';
-  // turn the number in to array, then revers the aray then join and convert it to Number
   stringNum = Number(stringNum.split('').reverse().join(''));
-  // check if stringNum still equal to num
   return stringNum === num ? true: false;
 };
-console.log(numIsPalindrome(123321))
+// console.log(numIsPalindrome(123321))
+
+// helper function to check number length
+const checkNumLength = (num) => {
+  let stringNum = num + '';
+  return stringNum.length;
+};
+// console.log(checkNumLength(17382893472938789))
 
 const largestPalindromeProduct = (digit) => {
-  // create a storage
+  // use 9 and repeat the amount of digit that user specifies then convert it to number
+  let maxNum = Number('9'.repeat(digit));
   let storage = [ ];
-  // create a num1
-  let num1 = 0;
-  // create a num2
-  let num2 = 0;
-
+  for (var i = 0; i <= maxNum; i++) {
+    for (var j = 0; j <= maxNum; j++) {
+      let product = i * j;
+      if (numIsPalindrome(product)) {
+        storage.push(product);
+      }
+    }
+  }
+  return Math.max.apply(this, storage);
 };
+
+// console.log(largestPalindromeProduct(3))
