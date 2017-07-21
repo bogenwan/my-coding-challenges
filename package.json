@@ -1,0 +1,25 @@
+{
+  "name": "my-coding-challenges",
+  "version": "1.0.0",
+  "description": "coding challenge",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bogenwan/my-coding-challenges.git"
+  },
+  "author": "Johnny Kwong <pobo1230@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bogenwan/my-coding-challenges/issues"
+  },
+  "homepage": "https://github.com/bogenwan/my-coding-challenges#readme",
+  "devDependencies": {
+    "jasmine": "^2.6.0"
+  }
+}
