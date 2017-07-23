@@ -1,23 +1,43 @@
 /*
 Problem 1.1
 */
+// const isUnique = (string) => {
+//   let state = true
+//   let storage = {};
+//   if (string.length === 0) {
+//     return 'Please input a string with length > 0'
+//   }
+//   for (var i = 0; i < string.length; i++) {
+//     if (storage.hasOwnProperty(string[i])) {
+//       return state = false
+//     } else {
+//       storage[string[i]] = 0;
+//     }
+//   }
+//   return state;
+// };
+
+// solution without using object data structure to store
 const isUnique = (string) => {
-  let state = true
-  let storage = {};
+  let state = true;
   if (string.length === 0) {
-    return 'Please input a string with length > 0'
+    return 'Please input a string with length > 0';
   }
   for (var i = 0; i < string.length; i++) {
-    if (storage.hasOwnProperty(string[i])) {
-      return state = false
-    } else {
-      storage[string[i]] = 0;
+    // second loop to check of any other character are the same as i
+    for (var j = i + 1; j < string.length; j++) {
+      if (string[i] === string[j]) {
+        return state = false;
+      }
     }
   }
-  return state;
-}
-// console.log(isUnique('world'));
+  return true;
+};
+// console.log(isUnique('worldaksuij'));
 
+/*
+Problem 1.2
+*/
 const checkPermutation = (str1, str2) => {
   let state = true;
   let storage = {};
@@ -47,3 +67,11 @@ const checkPermutation = (str1, str2) => {
   return state;
 };
 // console.log(checkPermutation('wworwd', 'wworww'));
+
+const URLify = (string, strLength) => {
+  if (string.length === 0 || arguments.length === 1) {
+    return 'Please input strings with length > 0 and string length as second ';
+  }
+
+};
+console.log(URLify(''))

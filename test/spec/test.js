@@ -2,7 +2,7 @@
   'use strict';
 
   describe('Chapter 1 coding challenge test', function () {
-    describe('question 1.1', function () {
+    describe('Question 1.1', function () {
       it('should return a message to user if the string is empty', function () {
         expect(isUnique('')).toBe('Please input a string with length > 0');
       });
@@ -17,7 +17,7 @@
 
     });
 
-    describe('question 1.2', function () {
+    describe('Question 1.2', function () {
       it('should return message to user if either string is empty', function () {
         expect(checkPermutation('', '')).toBe('Please input strings with length > 0')
       });
@@ -38,6 +38,11 @@
         expect(checkPermutation('worldd', 'orldwd')).toBe(true);
       });
 
+    describe('Question 1.3', function () {
+      it('should return a message if input string is empty and no string length given as second arguments', function () {
+        expect(URLify('')).toBe('Please input strings with length > 0 and string length as second ');
+      });
+    });
 
     });
   });
