@@ -68,10 +68,51 @@ const checkPermutation = (str1, str2) => {
 };
 // console.log(checkPermutation('wworwd', 'wworww'));
 
-const URLify = (string, strLength) => {
+const URLify = function (string, strLength) {
   if (string.length === 0 || arguments.length === 1) {
     return 'Please input strings with length > 0 and string length as second ';
   }
+  let strArray = string.split('');
+  let spaceCount = 0;
+  for (var i = 0; i < strLength; i++) {
+    if (strArray[i] === ' ') {
+      spaceCount++;
+    }
+  }
+  let neededLength = strLength + spaceCount * 2;
+  for (var j = strLength -1; j >= 0; j--) {
+    console.log(j)
+    console.log(strArray[j])
+    if (strArray[j] !== ' ') {
+      strArray[neededLength -1] = strArray[j];
+      neededLength--;
+    } else {
+      strArray[neededLength -1] = '0';
+      strArray[neededLength -2] = '2';
+      strArray[neededLength -3] = '%';
+      neededLength -= 3;
+    }
+  }
+  // let shortenString = string.slice(0, strLength);
+  // let urlString = shortenString.split(' ').join('%20');
+  // return urlString;
+  return strArray.join('');
 
 };
-console.log(URLify(''))
+console.log(URLify('Mr John Smith    ', 13))
+
+// const test = (...arguments) => {
+//     console.log(arguments)
+//   // console.log(b)
+// }
+// console.log(test('johnny', 13))
+
+// function lastLetterIndex(str) {
+//   for ( var i = str.length-1; i >= 0 ; i--) {
+//     if ( str[i] != " ") {
+//       return i;
+//     }
+//   }
+//   return 0;
+// }
+// console.log(lastLetterIndex('johnny'));

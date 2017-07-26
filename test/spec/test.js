@@ -42,6 +42,10 @@
       it('should return a message if input string is empty and no string length given as second arguments', function () {
         expect(URLify('')).toBe('Please input strings with length > 0 and string length as second ');
       });
+
+      it('should return the input string with each letter space replace my 20%', function () {
+        expect(URLify('My name is Johnny   ', 17)).toBe('My%20name%20is%20Johnny');
+      });
     });
 
     });
