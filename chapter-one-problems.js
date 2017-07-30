@@ -92,5 +92,20 @@ const URLify = function (string, strLength) {
     }
   }
   return strArray.join('');
-
 };
+
+// console.log(URLify('Mr John Smith    ', 13));
+
+const palinPermu = function (str) {
+  var lwrStr = str.toLowerCase();
+  var spaceIndexList = {};
+  // save the white space
+  for (var i = 0; i < str.length; i++) {
+    if (str[i] === ' ') {
+      spaceIndexList[i] = ' ';
+    }
+  }
+  return spaceIndexList;
+};
+
+console.log(palinPermu('Tact Coa'));
