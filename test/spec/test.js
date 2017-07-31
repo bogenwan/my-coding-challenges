@@ -48,6 +48,12 @@
       });
     });
 
+    describe('Question 1.4', function () {
+      it('should return a message if input length is 0', function () {
+        expect(palinPermu('')).toBe('please enter a string with length more then 0');
+      });
+    });
+
     });
   });
 

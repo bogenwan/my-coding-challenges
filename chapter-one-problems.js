@@ -97,15 +97,42 @@ const URLify = function (string, strLength) {
 // console.log(URLify('Mr John Smith    ', 13));
 
 const palinPermu = function (str) {
+  var state = true;
+  var storage = {};
+  var oddCount = 0;
+  // var permuList = [];
+  if (str.length === 0) {
+    return 'please enter a string with length more then 0'
+  }
   var lwrStr = str.toLowerCase();
-  var spaceIndexList = {};
-  // save the white space
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] === ' ') {
-      spaceIndexList[i] = ' ';
+  // var spaceIndexList = {};
+  // // save the white space position
+  // for (var i = lwrStr.length -1; i >= 0; i--) {
+  //   if (str[i] === ' ') {
+  //     spaceIndexList[i] = ' ';
+  //   }
+  // }
+  // remove white spaces
+  lwrStr = lwrStr.replace(/\s/g, '');
+  strArr = lwrStr.split('')
+  for (var j = 0; j < strArr.length; j++) {
+    if (storage[strArr[j]] === undefined) {
+      storage[strArr[j]] = 1;
+    } else {
+      storage[strArr[j]]+= 1;
     }
   }
-  return spaceIndexList;
+  console.log(storage)
+  for (var key in storage) {
+    if (storage[key] % 2 !== 0) {
+      console.log(oddCount)
+      oddCount ++
+      if (oddCount >= 2) {
+        return state = false;
+      }
+    }
+  }
+  return state;
 };
 
-console.log(palinPermu('Tact Coa'));
+console.log(palinPermu('Ta ct Coa ff gg'));
