@@ -1,36 +1,34 @@
 const permutation = function (str) {
-  var strArr = str.split('');
+  var arr = str.split('');
   var permuList = [ ];
-
+  // helper for swap element in array
   var swap = function (a, b) {
-    var temp = strArr[a];
-    strArr[a] = strArr[b];
-    strArr[b] = temp;
+    var temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
   };
 
-  function helperGenerater (num) {
+  function generater (num) {
     if (num === 1) {
-      return strArr;
+      // once recurisve iteration calls down to 1, we can only push the permued string to the array here
+      permuList.push(arr.join(''))
+      return;
     }
     for (var i = 0; i < num; i++) {
-      console.log(num)
-      helperGenerater(num -1);
+      generater(num -1);
       if (num % 2 === 0) {
-        swap(i, num -1);
-        console.log(strArr)
-        permuList.push(strArr);
-      } else {
         swap(0, num -1);
-        permuList.push(strArr);
+      } else {
+        swap(i, num -1);
       }
     }
   }
 
-  helperGenerater(str.length);
+  generater(str.length);
 
   return permuList;
 };
-console.log(permutation('abc'));
+console.log(permutation('abcd'));
 
 // var regex = /([a-z])\1+/
 
