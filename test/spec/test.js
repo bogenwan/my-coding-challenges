@@ -37,6 +37,7 @@
       it('should return true if string 2 is permutation of string 1', function () {
         expect(checkPermutation('worldd', 'orldwd')).toBe(true);
       });
+    });
 
     describe('Question 1.3', function () {
       it('should return a message if input string is empty and no string length given as second arguments', function () {
@@ -52,9 +53,43 @@
       it('should return a message if input length is 0', function () {
         expect(palinPermu('')).toBe('please enter a string with length more then 0');
       });
+
+      it('should return true if the string is permutaion of a palindrom', function () {
+        expect(palinPermu('Ta ct Coa')).toBe(true);
+      });
+
+      it('should return false if the string is not permutation of a palindrom', function () {
+        expect(palinPermu('Ta ct Coa ff g')).toBe(false);
+      });
     });
 
+    describe('Question 1.5', function () {
+      it('should return true if the string is only edited once by removing a character', function () {
+        expect(oneAway('pale', 'ple')).toBe(true)
+      });
+
+      it('should return true if the string is only edited once by adding a character', function () {
+        expect(oneAway('pales', 'pale')).toBe(true);
+      });
+
+      it('should return false if the string is edited more then once by adding more character', function () {
+        expect(oneAway('palese', 'pale')).toBe(false);
+      });
+
+      it('should return false if the string is edited more then once by removing more character', function () {
+        expect(oneAway('pale', 'pe')).toBe(false);
+      });
+
+      it('should return true if the string is edited no more then once by replaceing character', function () {
+        expect(oneAway('pale', 'bale')).toBe(true);
+      });
+
+      it('should return false if the string is edited more then once by replaceing character', function () {
+        expect(oneAway('pale', 'bake')).toBe(false);
+      });
+
     });
+
   });
 
 })();

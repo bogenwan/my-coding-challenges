@@ -100,18 +100,10 @@ const palinPermu = function (str) {
   var state = true;
   var storage = {};
   var oddCount = 0;
-  // var permuList = [];
   if (str.length === 0) {
     return 'please enter a string with length more then 0'
   }
   var lwrStr = str.toLowerCase();
-  // var spaceIndexList = {};
-  // // save the white space position
-  // for (var i = lwrStr.length -1; i >= 0; i--) {
-  //   if (str[i] === ' ') {
-  //     spaceIndexList[i] = ' ';
-  //   }
-  // }
   // remove white spaces
   lwrStr = lwrStr.replace(/\s/g, '');
   strArr = lwrStr.split('')
@@ -122,10 +114,8 @@ const palinPermu = function (str) {
       storage[strArr[j]]+= 1;
     }
   }
-  console.log(storage)
   for (var key in storage) {
     if (storage[key] % 2 !== 0) {
-      console.log(oddCount)
       oddCount ++
       if (oddCount >= 2) {
         return state = false;
@@ -134,5 +124,33 @@ const palinPermu = function (str) {
   }
   return state;
 };
+// console.log(palinPermu('Ta ct Coa ff gg'));
 
-console.log(palinPermu('Ta ct Coa ff gg'));
+const oneAway = function (str1, str2) {
+  var state = true;
+  var strLengthDiff = str1.length - str2.length;
+
+  function isReplacedOnce (first, second) {
+    let answer = true;
+    let counter = 0;
+    for (var i = 0; i < first.length && counter < 2; i++) {
+      if (first[i] !== second[i]) {
+        counter++;
+      }
+    }
+    if (counter === 2) {
+      answer = false;
+    }
+    return answer
+  };
+
+  if (strLengthDiff === 0 && isReplacedOnce(str1, str2) === false) {
+    state = false;
+  }
+
+  if (Math.abs(strLengthDiff) > 1) {
+    state = false;
+  }
+  return state;
+};
+// console.log(oneAway('pale', 'ple'))
