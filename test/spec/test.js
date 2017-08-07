@@ -87,9 +87,17 @@
       it('should return false if the string is edited more then once by replaceing character', function () {
         expect(oneAway('pale', 'bake')).toBe(false);
       });
-
     });
 
+    describe('Question 1.6', function () {
+      it('should return the compressed string if it is shorter then the input string', function () {
+        expect(stringCompress('aabbcccccaaa')).toBe('a5b2c5');
+      });
+
+      it('should return the input string if it is shorter then the compressed string', function () {
+        expect(stringCompress('aabbcc')).toBe('aabbcc');
+      });
+    });
   });
 
 })();

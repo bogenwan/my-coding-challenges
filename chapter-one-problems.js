@@ -154,3 +154,20 @@ const oneAway = function (str1, str2) {
   return state;
 };
 // console.log(oneAway('pale', 'ple'))
+
+const stringCompress = function (str) {
+  var storage = {};
+  var result = '';
+  for (var i = 0; i < str.length; i++) {
+    if(storage[str[i]] === undefined) {
+      storage[str[i]] = 1;
+    } else {
+      storage[str[i]] = storage[str[i]] + 1;
+    }
+  }
+  for (key in storage) {
+    result = result + key + storage[key]
+  }
+  return str.length > result.length ? result : str;
+};
+console.log(stringCompress('aabbcc'))
