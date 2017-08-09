@@ -170,4 +170,75 @@ const stringCompress = function (str) {
   }
   return str.length > result.length ? result : str;
 };
-console.log(stringCompress('aabbcc'))
+// console.log(stringCompress('aabbcc'))
+
+const twoByTwoMatrix = [
+[1, 2],
+[3, 4]
+];
+
+const threeByThreeMatrix = [
+[1, 2, 3],
+[4, 5, 6],
+[7, 8, 9]
+]
+
+const fourByFourMatrix = [
+[ 1,  2,  3,  4],
+[ 5,  6,  7,  8],
+[ 9, 10, 11, 12],
+[13, 14, 15, 16]
+];
+
+const rotateMatrix = function (matrix) {
+  let last = matrix.length - 1;
+  let layer = matrix.length / 2;
+  var swap = function (a, b) {
+    let temp = a;
+    a = b;
+    b = temp;
+  };
+
+  for (var i = 0; i < last; i++) {
+    // for (var j = 0; j < last; j++) {
+      var temp = matrix[i][i]
+      matrix[i][i] = matrix[i][last];
+      matrix[i][i] = matrix[last][last];
+      matrix[i][i] = matrix[last][i];
+    // }
+  }
+
+  return matrix;
+};
+console.log(rotateMatrix(twoByTwoMatrix));
+// console.log(rotateMatrix(threeByThreeMatrix));
+// console.log(rotateMatrix(fourByFourMatrix));
+
+// function rotateMatrix(matrix) {
+//   var min = 0;
+//   var max = matrix.length - 1;
+
+//   while (min < max ) {
+//     var temp1 = [];
+//     var temp2 = [];
+//     for (var i = min; i < max; i++) {
+//       // Top
+//       temp1 = matrix[i][max];
+//       matrix[i][max] = matrix[min][i];
+
+//       // Right
+//       temp2 = matrix[max][max - i + min] // Can only reach the max if you add back the min to i
+//       matrix[max][max - i + min] = temp1;
+//       // Bottom
+//       temp1 = matrix[max - i + min][min];
+//       matrix[max - i + min][min] = temp2;
+//       // Left
+//       matrix[min][i] = temp1;
+//     }
+//     min++;
+//     max--;
+//   }
+
+//   return matrix;
+// }
+// console.log(rotateMatrix(fourByFourMatrix))
