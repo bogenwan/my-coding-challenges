@@ -199,26 +199,28 @@ const rotateMatrix = function (matrix) {
     b = temp;
   };
   let count = matrix.length -1;
-  for (var i = 0; i <= last; i++) {
-    // save lt upper to temp
-    var temp = matrix[i][last - count]
-    //  assign lt lower to lt upper
-    matrix[i][last - count] = matrix[matrix.length -1][i];
-    // assign rt lower to lt lower
-    matrix[matrix.length -1][i] = matrix[last][matrix.length -1];
-    // assign rt upper to rt lower
-    matrix[last][matrix.length -1] = matrix[last - count][last];
-    // assign temp to rt upper
-    matrix[last - count][last] = temp;
-    last--;
-    count--;
+  for(var j = 0; j < layer.length; j++) {
+    for (var i = 0; i <= last; i++) {
+      // save lt upper to temp
+      var temp = matrix[i][last - count]
+      //  assign lt lower to lt upper
+      matrix[i][last - count] = matrix[matrix.length -1][i];
+      // assign rt lower to lt lower
+      matrix[matrix.length -1][i] = matrix[last][matrix.length -1];
+      // assign rt upper to rt lower
+      matrix[last][matrix.length -1] = matrix[last - count][last];
+      // assign temp to rt upper
+      matrix[last - count][last] = temp;
+      last--;
+      count--;
+    }
   }
 
   return matrix;
 };
 console.log(rotateMatrix(twoByTwoMatrix));
 console.log(rotateMatrix(threeByThreeMatrix));
-// console.log(rotateMatrix(fourByFourMatrix));
+console.log(rotateMatrix(fourByFourMatrix));
 
 // function rotateMatrix(matrix) {
 //   var min = 0;
