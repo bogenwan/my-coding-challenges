@@ -200,17 +200,21 @@ const rotateMatrix = function (matrix) {
   };
 
   for (var i = 0; i < last; i++) {
-    // for (var j = 0; j < last; j++) {
-      var temp = matrix[i][i]
-      matrix[i][i] = matrix[i][last];
-      matrix[i][i] = matrix[last][last];
-      matrix[i][i] = matrix[last][i];
-    // }
+    // save lt upper to temp
+    var temp = matrix[i][i]
+    //  assign lt lower to lt upper
+    matrix[i][i] = matrix[last][i];
+    // assign rt lower to lt lower
+    matrix[last][i] = matrix[last][last];
+    // assign rt upper to rt lower
+    matrix[last][last] = matrix[i][last];
+    // assign temp to rt upper
+    matrix[i][last] = temp;
   }
 
   return matrix;
 };
-console.log(rotateMatrix(twoByTwoMatrix));
+console.log(rotateMatrix(threeByThreeMatrix));
 // console.log(rotateMatrix(threeByThreeMatrix));
 // console.log(rotateMatrix(fourByFourMatrix));
 
