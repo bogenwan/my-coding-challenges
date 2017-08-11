@@ -190,37 +190,66 @@ const fourByFourMatrix = [
 [13, 14, 15, 16]
 ];
 
+const fiveByFiveMatrix = [
+[ 1,  2,  3,  4,  5],
+[ 6,  7,  8,  9, 10],
+[11, 12, 13, 14, 15],
+[16, 17, 18, 19, 20],
+[21, 22, 23, 24, 25]
+]
+
 const rotateMatrix = function (matrix) {
-  let last = matrix.length - 1;
-  let layer = matrix.length / 2;
-  var swap = function (a, b) {
-    let temp = a;
-    a = b;
-    b = temp;
-  };
-  let count = matrix.length -1;
-  for(var j = 0; j < layer.length; j++) {
-    for (var i = 0; i <= last; i++) {
-      // save lt upper to temp
-      var temp = matrix[i][last - count]
-      //  assign lt lower to lt upper
-      matrix[i][last - count] = matrix[matrix.length -1][i];
-      // assign rt lower to lt lower
-      matrix[matrix.length -1][i] = matrix[last][matrix.length -1];
-      // assign rt upper to rt lower
-      matrix[last][matrix.length -1] = matrix[last - count][last];
-      // assign temp to rt upper
-      matrix[last - count][last] = temp;
-      last--;
-      count--;
+  // let begin = 0;
+  // let end = matrix.length -1;
+  // let last = matrix.length - 1;
+  if (matrix.length === 1 || 0) {
+    return matrix;
+  }
+  let totalLayers = matrix.length / 2;
+  // iterate through each layer
+  for (var currentLayer = 0; currentLayer < totalLayers; currentLayer++) {
+    // iterate through each element in layer
+    var begin = currentLayer;
+    // use matrix length minus current layer to access matrix diagonally
+    var end = matrix.length - currentLayer - 1;
+      var counter = 0;
+    for (var i = begin; i < end; i++) {
+      // memorize top left
+      var temp = matrix[begin][i];
+      // bottom left to top left
+      matrix[begin][i] = matrix[end - counter][i - counter];
+      // bottom right to bottom left
+      matrix[end - counter][i - counter] = matrix[end][end - counter];
+      // top right to bottom right
+      matrix[end][end - counter] = matrix[begin + counter][end];
+      matrix[begin + counter][end] = temp;
+      counter++
     }
   }
+  // let count = matrix.length -1;
+  // for(var j = 0; j < layer.length; j++) {
+  //   for (var i = 0; i <= last; i++) {
+  //     // save lt upper to temp
+  //     var temp = matrix[i][last - count]
+  //     //  assign lt lower to lt upper
+  //     matrix[i][last - count] = matrix[matrix.length -1][i];
+  //     // assign rt lower to lt lower
+  //     matrix[matrix.length -1][i] = matrix[last][matrix.length -1];
+  //     // assign rt upper to rt lower
+  //     matrix[last][matrix.length -1] = matrix[last - count][last];
+  //     // assign temp to rt upper
+  //     matrix[last - count][last] = temp;
+  //     last--;
+  //     count--;
+  //   }
+  // }
 
   return matrix;
 };
 console.log(rotateMatrix(twoByTwoMatrix));
 console.log(rotateMatrix(threeByThreeMatrix));
 console.log(rotateMatrix(fourByFourMatrix));
+console.log(rotateMatrix(fiveByFiveMatrix));
 
 // function rotateMatrix(matrix) {
 //   var min = 0;
