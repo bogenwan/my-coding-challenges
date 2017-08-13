@@ -100,6 +100,14 @@
     });
 
     describe('Question 1.7', function () {
+      it('should return empty matrix if matrix length is 0', function () {
+        expect(rotateMatrix([[]])).toEqual([[]]);
+      });
+
+      it('should return original matrix if matrix length is 1', function () {
+        expect(rotateMatrix([[1]])).toEqual([[1]])
+      });
+
       it('should return a 90 degree clockwise rotated 2x2 matrix', function () {
         expect(rotateMatrix([[1, 2], [3, 4]])).toEqual([[3, 1], [4, 2]]);
       });
@@ -112,8 +120,20 @@
         expect(rotateMatrix([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])).toEqual([[13, 9, 5, 1], [14, 10, 6, 2], [15, 11, 7, 3], [16, 12, 8, 4]]);
       });
 
+      it('should return a 90 degree clockwise rotated 5x5 matrix', function () {
+        expect(rotateMatrix([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]])).toEqual([[21, 16, 11, 6, 1], [22, 17, 12, 7, 2], [23, 18, 13, 8, 3], [24, 19, 14, 9, 4], [25, 20, 15, 10, 5]]);
+      });
+    });
 
-    })
+    describe('Question 1.8', function () {
+      it('should return empty matrix if matrix length is 0', function () {
+        expect(rotateMatrix([[]])).toEqual([[]])
+      });
+
+      it('Should return original matrix if no 0 is found in matrix', function () {
+        expect(zeroMatrix([[1, 1], [1, 1]])).toEqual([[1, 1], [1, 1]]);
+      });
+    });
 
   });
 

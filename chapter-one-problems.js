@@ -199,9 +199,6 @@ const fiveByFiveMatrix = [
 ]
 
 const rotateMatrix = function (matrix) {
-  // let begin = 0;
-  // let end = matrix.length -1;
-  // let last = matrix.length - 1;
   if (matrix.length === 1 || 0) {
     return matrix;
   }
@@ -226,56 +223,25 @@ const rotateMatrix = function (matrix) {
       counter++
     }
   }
-  // let count = matrix.length -1;
-  // for(var j = 0; j < layer.length; j++) {
-  //   for (var i = 0; i <= last; i++) {
-  //     // save lt upper to temp
-  //     var temp = matrix[i][last - count]
-  //     //  assign lt lower to lt upper
-  //     matrix[i][last - count] = matrix[matrix.length -1][i];
-  //     // assign rt lower to lt lower
-  //     matrix[matrix.length -1][i] = matrix[last][matrix.length -1];
-  //     // assign rt upper to rt lower
-  //     matrix[last][matrix.length -1] = matrix[last - count][last];
-  //     // assign temp to rt upper
-  //     matrix[last - count][last] = temp;
-  //     last--;
-  //     count--;
-  //   }
-  // }
-
   return matrix;
 };
-console.log(rotateMatrix(twoByTwoMatrix));
-console.log(rotateMatrix(threeByThreeMatrix));
-console.log(rotateMatrix(fourByFourMatrix));
-console.log(rotateMatrix(fiveByFiveMatrix));
+// console.log(rotateMatrix(twoByTwoMatrix));
+// console.log(rotateMatrix(threeByThreeMatrix));
+// console.log(rotateMatrix(fourByFourMatrix));
+// console.log(rotateMatrix(fiveByFiveMatrix));
 
-// function rotateMatrix(matrix) {
-//   var min = 0;
-//   var max = matrix.length - 1;
+const testMatrix2x2 = [[1, 0], [1, 1]];
 
-//   while (min < max ) {
-//     var temp1 = [];
-//     var temp2 = [];
-//     for (var i = min; i < max; i++) {
-//       // Top
-//       temp1 = matrix[i][max];
-//       matrix[i][max] = matrix[min][i];
+const zeroMatrix = function (matrix) {
+  if (matrix.length === 0) {
+    return [];
+  }
 
-//       // Right
-//       temp2 = matrix[max][max - i + min] // Can only reach the max if you add back the min to i
-//       matrix[max][max - i + min] = temp1;
-//       // Bottom
-//       temp1 = matrix[max - i + min][min];
-//       matrix[max - i + min][min] = temp2;
-//       // Left
-//       matrix[min][i] = temp1;
-//     }
-//     min++;
-//     max--;
-//   }
-
-//   return matrix;
-// }
-// console.log(rotateMatrix(fourByFourMatrix))
+  for (var i = 0; i < matrix.length; i++) {
+    for (var j = 0; j < matrix[i].length; j++) {
+      console.log(matrix[i][j])
+    }
+  }
+  return matrix;
+};
+console.log(zeroMatrix(testMatrix2x2));
