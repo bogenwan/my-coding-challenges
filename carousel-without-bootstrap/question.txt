@@ -1,0 +1,2 @@
+In this folder, you will find a HTML file and three images. If you open the HTML file in a browser, you will see a photo carousel, powered by bootstrap.
+Can you implement a similar carousel without using bootstrap? You may use jQuery but not any carousel plugins. You can make the carousel as fancy as you want to demonstrate what you are capable of.
