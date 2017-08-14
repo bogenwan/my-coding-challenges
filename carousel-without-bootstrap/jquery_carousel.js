@@ -19,7 +19,7 @@ $(document).ready(function () {
 
   $('.previous-button').click(function() {
     // var left_indent = parseInt($('.carousel ul').css('left')) + itemWidth;
-    $('.carousel ul').animate({'margin-left': '600px'}, 1000, function () {
+    $('.carousel ul').animate({'margin-left': '1000px'}, 1000, function () {
       // move last item before the first
       $('.carousel ul li:first').before($('.carousel ul li:last'));
       $('.carousel ul').css({'margin-left': '0px'});
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
   $('.next-button').click(function() {
     // var left_indent = parseInt($('.carousel ul').css('left')) - itemWidth;
-    $('.carousel ul').animate({'margin-left': '-600px'}, 1000, function () {
+    $('.carousel ul').animate({'margin-left': '-1000px'}, 1000, function () {
       //move first item after last
       $('.carousel ul li:last').after($('.carousel ul li:first'));
       //set default item to correct position
@@ -39,7 +39,7 @@ $(document).ready(function () {
   });
 
   // stop interval once hover over buttons
-  $('button').hover(
+  $('.button').hover(
     function() {
       clearInterval(interval);
     },
