@@ -2,10 +2,6 @@
   box-sizing: content-box;
 }
 
-/**:focus {
-  outline: none;
-}*/
-
 body {
   background-image: url('dark-blue-background.jpg');
   background-color: #f0ffff;
@@ -41,8 +37,6 @@ body {
   width: 1000px;
   height: 500px;
   overflow: hidden;
-  /*margin: auto;*/
-  /*border: 2px dotted red;*/
 }
 
 .items_ul {
@@ -51,29 +45,17 @@ body {
   list-style: none;
   width: 3000px;
   height: 500px;
-  /*margin: 0;*/
-  /*padding: 0;*/
-  /*height: 570px;*/
-  /*width: 1200px;*/
-  /*border: 1px solid red;*/
 }
 
 .items_ul li {
   float: left;
   width: 1000px;
   height: 500px;
-  /*width: 7700px;*/
-  /*border: 3px solid blue;*/
 }
 
 .items_ul li img {
   width: 1000px;
   height: 500px;
-  /*margin-bottom: -10px;*/
-  /*width: 1190px;*/
-  /*height: 500px;*/
-  /*border-radius: 25px;*/
-  /*border: 2px dotted black;*/
 }
 
 .imgBtn {

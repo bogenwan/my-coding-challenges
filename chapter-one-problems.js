@@ -233,15 +233,34 @@ const rotateMatrix = function (matrix) {
 const testMatrix2x2 = [[1, 0], [1, 1]];
 
 const zeroMatrix = function (matrix) {
+  let end = matrix.length -1;
   if (matrix.length === 0) {
     return [];
   }
-
+  // matrix layer tracker
+  let rowLayer = 0;
   for (var i = 0; i < matrix.length; i++) {
     for (var j = 0; j < matrix[i].length; j++) {
-      console.log(matrix[i][j])
+      if (matrix[i][j] === 0) {
+        console.log(matrix[i][j])
+        let counter = rowLayer;
+        console.log(counter)
+        while (counter >= 0) {
+          matrix[counter][j] = 0;
+          matrix[end - counter][j] = 0;
+          counter--;
+        }
+      }
     }
+    rowLayer++;
   }
   return matrix;
 };
 console.log(zeroMatrix(testMatrix2x2));
+
+// var emptyArray = ['johnny', 'kwong', 'hi']
+// emptyArray.length = 0
+// while (emptyArray.length) {
+//   emptyArray.pop()
+// }
+// console.log(emptyArray)
