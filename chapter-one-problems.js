@@ -231,32 +231,74 @@ const rotateMatrix = function (matrix) {
 // console.log(rotateMatrix(fiveByFiveMatrix));
 
 const testMatrix2x2 = [[1, 0], [1, 1]];
+const testMatrix3x4 = [
+[1, 1, 1],
+[1, 1, 1],
+[1, 0, 1],
+[1, 1, 1]
+];
+const testMatrix4x4 = [
+[1, 1, 1, 1],
+[1, 1, 1, 1],
+[1, 1, 0, 1],
+[1, 1, 1, 1]
+];
 
 const zeroMatrix = function (matrix) {
   let end = matrix.length -1;
+  let rollHash = {};
+  let columnHash = {};
   if (matrix.length === 0) {
     return [];
   }
-  // matrix layer tracker
-  let rowLayer = 0;
+  // const rollZerorify = function (rollNum) {
+  //   let endOfRoll = matrix[rollNum].length -1;
+  //   while (endOfRoll >= 0) {
+  //     matrix[endOfRoll] = 0;
+  //     endOfRoll--;
+  //   }
+  // };
+
+  const columnZerorify = function (rollNum) {
+    let endOfRoll = matrix[rollNum].length -1;
+    while (endOfRoll >= 0) {
+      matrix[rollNum][endOfRoll] = 0;
+      endOfRoll--;
+    }
+  };
+  console.log(columnZerorify(2));
+
   for (var i = 0; i < matrix.length; i++) {
     for (var j = 0; j < matrix[i].length; j++) {
       if (matrix[i][j] === 0) {
-        console.log(matrix[i][j])
-        let counter = rowLayer;
-        console.log(counter)
-        while (counter >= 0) {
-          matrix[counter][j] = 0;
-          matrix[end - counter][j] = 0;
-          counter--;
-        }
+        console.log('layer ==>', i);
+        console.log('column ==>', j);
+        rollHash[i] = true;
+        columnHash[j] = true;
+        console.log('rollHash ==>', rollHash);
+        console.log('columnHash ==>', columnHash);
       }
     }
-    rowLayer++;
   }
+  // // matrix layer tracker
+  // let rowLayer = 0;
+  // for (var i = 0; i < matrix.length; i++) {
+  //   for (var j = 0; j < matrix[i].length; j++) {
+  //     if (matrix[i][j] === 0) {
+  //       let counter = end;
+  //       while (counter >= 0) {
+  //         matrix[counter][j] = 0;
+  //         matrix[i][counter] = 0;
+  //         counter--;
+  //       }
+  //       return matrix;
+  //     }
+  //   }
+  //   rowLayer++;
+  // }
   return matrix;
 };
-console.log(zeroMatrix(testMatrix2x2));
+console.log(zeroMatrix(testMatrix3x4));
 
 // var emptyArray = ['johnny', 'kwong', 'hi']
 // emptyArray.length = 0
