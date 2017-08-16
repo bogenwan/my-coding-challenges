@@ -232,10 +232,10 @@ const rotateMatrix = function (matrix) {
 
 const testMatrix2x2 = [[1, 0], [1, 1]];
 const testMatrix3x4 = [
-[1, 1, 1],
-[1, 1, 1],
+[1, 1, 0],
 [1, 0, 1],
-[1, 1, 1]
+[1, 1, 1],
+[0, 1, 1]
 ];
 const testMatrix4x4 = [
 [1, 1, 1, 1],
@@ -259,6 +259,7 @@ const zeroMatrix = function (matrix) {
   //   }
   // };
 
+  // function to set all selected column to zero
   const columnZerorify = function (rollNum) {
     let endOfRoll = matrix[rollNum].length -1;
     while (endOfRoll >= 0) {
@@ -266,7 +267,7 @@ const zeroMatrix = function (matrix) {
       endOfRoll--;
     }
   };
-  console.log(columnZerorify(2));
+  // console.log(columnZerorify(2));
 
   for (var i = 0; i < matrix.length; i++) {
     for (var j = 0; j < matrix[i].length; j++) {
@@ -279,6 +280,10 @@ const zeroMatrix = function (matrix) {
         console.log('columnHash ==>', columnHash);
       }
     }
+  }
+
+  for (var key in rollHash) {
+    columnZerorify(key);
   }
   // // matrix layer tracker
   // let rowLayer = 0;
