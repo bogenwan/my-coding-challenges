@@ -232,82 +232,63 @@ const rotateMatrix = function (matrix) {
 
 const testMatrix2x2 = [[1, 0], [1, 1]];
 const testMatrix3x4 = [
-[1, 1, 0],
+[1, 1, 1],
 [1, 0, 1],
 [1, 1, 1],
-[0, 1, 1]
+[1, 1, 0]
 ];
-const testMatrix4x4 = [
-[1, 1, 1, 1],
-[1, 1, 1, 1],
-[1, 1, 0, 1],
-[1, 1, 1, 1]
+const testMatrix5x4 = [
+[1, 1, 1, 1, 0],
+[1, 1, 1, 1, 1],
+[1, 1, 0, 1, 1],
+[0, 1, 1, 1, 1]
 ];
 
 const zeroMatrix = function (matrix) {
-  let end = matrix.length -1;
-  let rollHash = {};
-  let columnHash = {};
+  let positionHash = {};
   if (matrix.length === 0) {
     return [];
   }
-  // const rollZerorify = function (rollNum) {
-  //   let endOfRoll = matrix[rollNum].length -1;
-  //   while (endOfRoll >= 0) {
-  //     matrix[endOfRoll] = 0;
-  //     endOfRoll--;
-  //   }
-  // };
-
-  // function to set all selected column to zero
-  const columnZerorify = function (rollNum) {
-    let endOfRoll = matrix[rollNum].length -1;
+  // function to set all selected roll to zero
+  const rollZerorify = function (columnNum) {
+    let endOfRoll = matrix.length -1;
     while (endOfRoll >= 0) {
-      matrix[rollNum][endOfRoll] = 0;
+      matrix[endOfRoll][columnNum] = 0;
       endOfRoll--;
     }
   };
-  // console.log(columnZerorify(2));
+  // function to set all selected column to zero
+  const columnZerorify = function (rollNum) {
+    let endOfColumn = matrix[rollNum].length -1;
+    while (endOfColumn >= 0) {
+      matrix[rollNum][endOfColumn] = 0;
+      endOfColumn--;
+    }
+  };
 
-  for (var i = 0; i < matrix.length; i++) {
-    for (var j = 0; j < matrix[i].length; j++) {
-      if (matrix[i][j] === 0) {
-        console.log('layer ==>', i);
-        console.log('column ==>', j);
-        rollHash[i] = true;
-        columnHash[j] = true;
-        console.log('rollHash ==>', rollHash);
-        console.log('columnHash ==>', columnHash);
+  for (var roll = 0; roll < matrix.length; roll++) {
+    for (var column = 0; column < matrix[roll].length; column++) {
+      if (matrix[roll][column] === 0) {
+        positionHash[roll] = column;
       }
     }
   }
 
-  for (var key in rollHash) {
+  for (var key in positionHash) {
     columnZerorify(key);
+    rollZerorify(positionHash[key]);
   }
-  // // matrix layer tracker
-  // let rowLayer = 0;
-  // for (var i = 0; i < matrix.length; i++) {
-  //   for (var j = 0; j < matrix[i].length; j++) {
-  //     if (matrix[i][j] === 0) {
-  //       let counter = end;
-  //       while (counter >= 0) {
-  //         matrix[counter][j] = 0;
-  //         matrix[i][counter] = 0;
-  //         counter--;
-  //       }
-  //       return matrix;
-  //     }
-  //   }
-  //   rowLayer++;
-  // }
   return matrix;
 };
-console.log(zeroMatrix(testMatrix3x4));
+// console.log(zeroMatrix(testMatrix5x4));
 
-// var emptyArray = ['johnny', 'kwong', 'hi']
-// emptyArray.length = 0
-// while (emptyArray.length) {
-//   emptyArray.pop()
-// }
-// console.log(emptyArray)
+const stringRotation = function (str1, str2) {
+  let state - true;
+  for (let i = 0; i < str1.length; i++) {
+    for (let j = 0; j < str2.length; j++) {
+
+    }
+  }
+  return state;
+};
+console.log(stringRotation('waterbottle', 'erbottlewat'));

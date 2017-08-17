@@ -134,10 +134,13 @@
         expect(zeroMatrix([[1, 1], [1, 1]])).toEqual([[1, 1], [1, 1]]);
       });
 
-      it('Should return matrix with all column set to zero on the target position', function () {
-        expect(zeroMatrix([[0, 1, 1], [1, 1, 1], [1, 0, 1], [1, 1, 1]])).toEqual([[0, 0, 0], [1, 1, 1], [0, 0, 0], [1, 1, 1]]);
+      it('Should return matrix with all rolls and columns set to zero on the target position', function () {
+        expect(zeroMatrix([[0, 1, 1], [1, 1, 1], [1, 0, 1], [1, 1, 1]])).toEqual([[0, 0, 0], [0, 0, 1], [0, 0, 0], [0, 0, 1]]);
       });
 
+      it('Should return 5x4 matrix with all rolls columns set to zero on the target position', function () {
+        expect(zeroMatrix([[1, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 1, 0, 1, 1], [0, 1, 1, 1, 1]])).toEqual([[0, 0, 0, 0, 0], [0, 1, 0, 1, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]);
+      });
 
     });
 
