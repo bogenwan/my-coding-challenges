@@ -141,7 +141,32 @@
       it('Should return 5x4 matrix with all rolls columns set to zero on the target position', function () {
         expect(zeroMatrix([[1, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 1, 0, 1, 1], [0, 1, 1, 1, 1]])).toEqual([[0, 0, 0, 0, 0], [0, 1, 0, 1, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]);
       });
+    });
 
+    describe('Question 1.9', function () {
+      it('Should return false if both string length is different', function () {
+        expect(stringRotation('johnny', 'johnn')).toBe(false);
+      });
+
+      it('Should return false if there is characters that doesn\'t exist in the other string', function () {
+        expect(stringRotation('johnny', 'joheny')).toBe(false);
+      });
+
+      it('Should retuen true if string 2 is a rotation of string 1', function () {
+        expect(stringRotation('catnipsy', 'tnipsyca')).toBe(true);
+      });
+
+      it('Should return false if string 2 is not a rotation of string 1', function () {
+        expect(stringRotation('catnipsy', 'tnipysca')).toBe(false);
+      });
+
+      it('Should return true if string 2 is a rotation of string 1 by using otherStringRotation function', function () {
+        expect(otherStringRotation('kittenfancy', 'ncykittenfa')).toBe(true);
+      });
+
+      it('Should return false if string 2 is not a rotation of string 1 by using otherStringRotation function', function () {
+        expect(otherStringRotation('kittenfancy', 'ncyktitenfa')).toBe(false);
+      });
     });
 
   });

@@ -283,12 +283,34 @@ const zeroMatrix = function (matrix) {
 // console.log(zeroMatrix(testMatrix5x4));
 
 const stringRotation = function (str1, str2) {
-  let state - true;
-  for (let i = 0; i < str1.length; i++) {
-    for (let j = 0; j < str2.length; j++) {
+  let state = true;
+  let sortedString1 = str1.split('').sort().join('');
+  let sortedString2 = str2.split('').sort().join('');
+  let stringArray2 = str2.split('');
 
+  if(sortedString2 !== sortedString1) {
+    state = false;
+  }
+  let head;
+  let tail;
+  let newString;
+
+  for (let i = 0; i < stringArray2.length; i++) {
+    if ( stringArray2[i] === str1[0]) {
+      let head = stringArray2.slice(0, i);
+      let tail = stringArray2.slice(i);
+      newString = tail.concat(head).join('');
+      break
     }
   }
-  return state;
+  return newString === str1 ? state = true : state = false;
 };
-console.log(stringRotation('waterbottle', 'erbottlewat'));
+// console.log(stringRotation('waterbottle', 'bottlewater'));
+
+const otherStringRotation = function (str1, str2) {
+  let fullStringRotation = str1 + str1;
+  console.log(fullStringRotation)
+  let answer = fullStringRotation.includes(str2);
+  return answer
+};
+// console.log(otherStringRotation('waterbottle', 'erbottlewat'));
