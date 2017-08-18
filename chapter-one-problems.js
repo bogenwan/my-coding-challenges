@@ -300,7 +300,7 @@ const stringRotation = function (str1, str2) {
       let head = stringArray2.slice(0, i);
       let tail = stringArray2.slice(i);
       newString = tail.concat(head).join('');
-      break
+      break;
     }
   }
   return newString === str1 ? state = true : state = false;
@@ -309,8 +309,7 @@ const stringRotation = function (str1, str2) {
 
 const otherStringRotation = function (str1, str2) {
   let fullStringRotation = str1 + str1;
-  console.log(fullStringRotation)
   let answer = fullStringRotation.includes(str2);
-  return answer
+  return answer;
 };
 // console.log(otherStringRotation('waterbottle', 'erbottlewat'));
