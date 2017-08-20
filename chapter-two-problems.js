@@ -43,8 +43,6 @@ SinglyList.prototype.remove = function (value) {
       previousHead = currentHead;
       currentHead = currentHead.next;
     }
-    console.log(currentHead)
-    console.log(previousHead)
     if (currentHead.value === value) {
       previousHead.next = null;
       this.length--;
@@ -52,27 +50,35 @@ SinglyList.prototype.remove = function (value) {
   }
 };
 
-SinglyList.prototype.removeDub = function (linkedList) {
-return linkedList;
+SinglyList.prototype.removeDub = function () {
+  let storage = {};
+  let previousHead;
+  let currentHead = this.head;
+  while (currentHead.next) {
+    if (!storage[currentHead.value]) {
+      storage[currentHead.value] = 1;
+    } else {
+      previousHead.next = currentHead.next
+      this.length--;
+    }
+    previousHead = currentHead;
+    currentHead = currentHead.next;
+  }
+  if (!storage[currentHead.value]) {
+    storage[currentHead.value] = 1;
+  } else {
+    previousHead.next = currentHead.next;
+    this.length--;
+  }
 };
 
 const testListOne = new SinglyList();
 testListOne.add(1);
+testListOne.add(1);
 testListOne.add(2);
 testListOne.add(3);
-testListOne.remove(3);
-// SinglyList.add(1);
-// SinglyList.add(2);
-// SinglyList.add(3);
+testListOne.add(3);
+testListOne.add(4);
+testListOne.remove(4);
+testListOne.removeDub();
 console.log('testListOne ==>', testListOne)
-// let a = new Node(1);
-// let b = new Node(1);
-// let c = new Node(2);
-// let d = new Node(4);
-// let e = new Node(3);
-// a.next = b;
-// b.next = c;
-// c.next = d;
-// d.next = e;
-// console.log(a)
-// console.log(removeDub('johnny'));
