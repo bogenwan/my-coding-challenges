@@ -58,7 +58,7 @@ SinglyList.prototype.removeDub = function () {
     if (!storage[currentHead.value]) {
       storage[currentHead.value] = 1;
     } else {
-      previousHead.next = currentHead.next
+      previousHead.next = currentHead.next;
       this.length--;
     }
     previousHead = currentHead;
@@ -72,6 +72,28 @@ SinglyList.prototype.removeDub = function () {
   }
 };
 
+SinglyList.prototype.findKthToLast = function (num) {
+  let pointer1 = this.head;
+  let pointer2 = this.head;
+  if (this.head === null) {
+    return 'This list is empty!';
+  }
+  if (this.head.next === null) {
+    return this.head.value;
+  }
+  // use for loop to move the first pointer ahead
+  for (let i = 0; i < num; i++) {
+    if (pointer1.next) {
+      pointer1 = pointer1.next;
+    }
+  }
+  // once first pointer reach desire distance then set both pointer to move in sync
+  while (pointer1.next) {
+    pointer1 = pointer1.next;
+    pointer2 = pointer2.next;
+  }
+  return pointer2.value;
+};
 const testListOne = new SinglyList();
 testListOne.add(1);
 testListOne.add(1);
@@ -79,6 +101,8 @@ testListOne.add(2);
 testListOne.add(3);
 testListOne.add(3);
 testListOne.add(4);
-testListOne.remove(4);
-testListOne.removeDub();
-console.log('testListOne ==>', testListOne)
+// testListOne.remove(4);
+// testListOne.removeDub();
+
+// console.log('testListOne ==>', testListOne);
+console.log(testListOne.findKthToLast(4));
