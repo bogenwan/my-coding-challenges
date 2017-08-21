@@ -33,10 +33,7 @@ SinglyList.prototype.remove = function (value) {
     let previousHead = currentHead;
     while (currentHead.next) {
       if (currentHead.value === value) {
-        // console.log(currentHead.next)
-        // console.log(previousHead.next)
         previousHead.next = currentHead.next;
-        // console.log(previousHead.next)
         this.length--;
         break;
       }
@@ -94,15 +91,40 @@ SinglyList.prototype.findKthToLast = function (num) {
   }
   return pointer2.value;
 };
-const testListOne = new SinglyList();
-testListOne.add(1);
-testListOne.add(1);
-testListOne.add(2);
-testListOne.add(3);
-testListOne.add(3);
-testListOne.add(4);
+
+SinglyList.prototype.removeMiddle = function (value) {
+  if (this.head === null) {
+    return 'This list is empty!';
+  }
+  if (this.head.value === value || this.head.next.next === null) {
+    return 'Can\'t remove head or last node';
+  }
+  let previousHead = this.head;
+  let currentHead = this.head.next;
+  while (currentHead.next) {
+    if (currentHead.value === value && currentHead.next !== null) {
+      previousHead.next = currentHead.next;
+      this.length--;
+      break;
+    }
+    previousHead = previousHead.next;
+    currentHead = currentHead.next;
+  }
+  if (currentHead.value === value && currentHead.next === null) {
+    return 'Can\'t remove head or last node';
+  }
+  return 'No such value in this list';
+};
+// const testListOne = new SinglyList();
+// testListOne.add(1);
+// testListOne.add(2);
+// testListOne.add(6);
+// testListOne.add(3);
+// testListOne.add(5);
+// testListOne.add(4);
 // testListOne.remove(4);
 // testListOne.removeDub();
+// console.log(testListOne.removeMiddle(7));
 
 // console.log('testListOne ==>', testListOne);
-console.log(testListOne.findKthToLast(4));
+// console.log(testListOne.findKthToLast(4));
