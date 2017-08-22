@@ -2,9 +2,124 @@
   'use strict';
 
   describe('Chapter 2 coding challenge test', function () {
+    let linkedList = new SinglyList();
+
     describe('Question 2.1', function () {
+
+      beforeEach(function () {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(2);
+        linkedList.add(3);
+      });
+
+      afterEach(function () {
+        linkedList.removeAll();
+      });
+
       it('Should remove duplicate node from linked list', function () {
-        expect(removeDub('johnny')).toBe('johnny')
+        linkedList.removeDub();
+        expect(linkedList.length).toBe(3);
+      });
+    });
+
+    describe('Question 2.2', function () {
+
+      beforeEach(function () {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(6);
+      });
+
+      afterEach(function () {
+        linkedList.removeAll();
+      });
+
+      it('Should find 2nd to last element', function () {
+        expect(linkedList.findKthToLast(2)).toBe(4);
+      });
+
+      it('Should find 4th to last element', function () {
+        expect(linkedList.findKthToLast(4)).toBe(2);
+      });
+
+      it('Should find 0th to last element', function () {
+        expect(linkedList.findKthToLast(0)).toBe(6);
+      });
+
+      it('Should find 5th to last element', function () {
+        expect(linkedList.findKthToLast(5)).toBe(1);
+      });
+    });
+
+    describe('Question 2.3', function () {
+
+      describe('Test empty list', function () {
+        it('Should return a message if the list is empty', function () {
+          expect(linkedList.removeMiddle(1)).toBe('This list is empty!');
+        });
+      });
+
+      describe('Test remove head and tail', function () {
+
+        beforeEach(function () {
+          linkedList.add(1);
+          linkedList.add(6);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+        });
+
+        it('Should return a message if trying to remove first or last node', function () {
+          expect(linkedList.removeMiddle(1)).toBe('Can\'t remove head or last node');
+          expect(linkedList.removeMiddle(6)).toBe('Can\'t remove head or last node');
+        });
+      });
+
+      describe('Test functionality', function () {
+
+        beforeEach(function () {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(6);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+        });
+
+        it('Should remove the node contain the given value in the middle of the list', function () {
+          linkedList.removeMiddle(4);
+          expect(linkedList.length).toBe(5);
+          linkedList.removeMiddle(2);
+          expect(linkedList.length).toBe(4);
+          linkedList.removeMiddle(5);
+          expect(linkedList.length).toBe(3);
+        });
+      });
+
+      describe('Test if no such value in list', function () {
+
+        beforeEach(function () {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        });
+
+        afterEach(function() {
+        linkedList.removeAll();
+        });
+
+        it('Should return a message', function () {
+          expect(linkedList.removeMiddle(5)).toBe('No such value in this list');
+        });
       });
     });
 

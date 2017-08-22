@@ -24,7 +24,7 @@ SinglyList.prototype.add = function (value) {
   }
 };
 
-SinglyList.prototype.remove = function (value) {
+SinglyList.prototype.removeOne = function (value) {
   let currentHead = this.head;
   if (currentHead.value === value) {
     this.head = currentHead.next;
@@ -45,6 +45,11 @@ SinglyList.prototype.remove = function (value) {
       this.length--;
     }
   }
+};
+
+SinglyList.prototype.removeAll = function () {
+  this.head = null;
+  this.length = 0;
 };
 
 SinglyList.prototype.removeDub = function () {
@@ -122,7 +127,8 @@ SinglyList.prototype.removeMiddle = function (value) {
 // testListOne.add(3);
 // testListOne.add(5);
 // testListOne.add(4);
-// testListOne.remove(4);
+// testListOne.removeAll();
+// testListOne.removeOne(4);
 // testListOne.removeDub();
 // console.log(testListOne.removeMiddle(7));
 
