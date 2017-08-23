@@ -83,12 +83,12 @@
       describe('Test functionality', function () {
 
         beforeEach(function () {
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
-        linkedList.add(4);
-        linkedList.add(5);
-        linkedList.add(6);
+          linkedList.add(1);
+          linkedList.add(2);
+          linkedList.add(3);
+          linkedList.add(4);
+          linkedList.add(5);
+          linkedList.add(6);
         });
 
         afterEach(function () {
@@ -108,9 +108,9 @@
       describe('Test if no such value in list', function () {
 
         beforeEach(function () {
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
+          linkedList.add(1);
+          linkedList.add(2);
+          linkedList.add(3);
         });
 
         afterEach(function() {
@@ -120,6 +120,29 @@
         it('Should return a message', function () {
           expect(linkedList.removeMiddle(5)).toBe('No such value in this list');
         });
+      });
+    });
+
+    describe('Question 2.4', function () {
+
+      beforeEach(function () {
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(9);
+        linkedList.add(6);
+        linkedList.add(1);
+        linkedList.add(4);
+      });
+
+      afterEach(function () {linkedList.removeAll()});
+
+      it('Should arrage linked list with smaller number to the left and higher number to the right with given value as pivot', function () {
+        let sortedLinkedList = linkedList.partition(linkedList, 6);
+        expect(sortedLinkedList.findKthToLast(0)).toBe(6);
+        expect(sortedLinkedList.findKthToLast(2)).toBe(4);
+        expect(sortedLinkedList.findKthToLast(4)).toBe(3);
+        expect(sortedLinkedList.findKthToLast(6)).toBe(2);
+        expect(sortedLinkedList.length).toBe(6);
       });
     });
 

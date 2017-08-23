@@ -125,18 +125,14 @@ SinglyList.prototype.partition = function (mainList, num) {
   let pivot = num;
   let lowerList = new SinglyList;
   let higherList = new SinglyList;
-  let currentHead = this.head;
-  // let lowerListPointer = lowerList.head;
+  let currentHead = mainList.head;
   while (currentHead.next) {
     let currValue = currentHead.value;
     if (currValue < num) {
       lowerList.add(currValue);
-      // lowerListPointer = lowerListPointer.next;
-    // console.log('lowerListPointer ==>', lowerListPointer)
     }
     if (currValue >= num) {
       higherList.add(currValue);
-      // lowerListPointer = lowerListPointer.next;
     }
     currentHead = currentHead.next;
   }
@@ -145,25 +141,27 @@ SinglyList.prototype.partition = function (mainList, num) {
   } else if (currentHead.value >= num) {
     higherList.add(currentHead.value);
   }
-
-  // console.log('lowerList ==>', lowerList);
-  // console.log('HigherList ==>', higherList);
-  // lowerListCurrNode.next = higherList.head;
-  // console.log('final lower list', lowerList);
+  let secondPointer = lowerList.head;
+  while (secondPointer.next) {
+    secondPointer = secondPointer.next;
+  }
+  secondPointer.next = higherList.head;
+  lowerList.length = lowerList.length + higherList.length;
+  return lowerList;
 };
 
-const testListOne = new SinglyList();
-testListOne.add(2);
-testListOne.add(3);
-testListOne.add(9);
-testListOne.add(6);
-testListOne.add(1);
-testListOne.add(4);
+// const testListOne = new SinglyList();
+// testListOne.add(2);
+// testListOne.add(3);
+// testListOne.add(9);
+// testListOne.add(6);
+// testListOne.add(1);
+// testListOne.add(4);
 // testListOne.removeAll();
 // testListOne.removeOne(4);
 // testListOne.removeDub();
 // console.log(testListOne.removeMiddle(7));
-testListOne.partition(testListOne, 6);
+// console.log(testListOne.partition(testListOne, 6));
 
 
 // console.log('testListOne ==>', testListOne);
