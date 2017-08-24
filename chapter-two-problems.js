@@ -150,18 +150,58 @@ SinglyList.prototype.partition = function (mainList, num) {
   return lowerList;
 };
 
-// const testListOne = new SinglyList();
-// testListOne.add(2);
-// testListOne.add(3);
-// testListOne.add(9);
+const sumLists = function (list1, list2) {
+  let sumList = new SinglyList();
+  let list1Pointer = list1.head;
+  let list2Pointer = list2.head;
+  let memo = 0;
+  let sum = 0;
+
+  while (list1Pointer !== null && list2Pointer !== null) {
+    sum = list1Pointer.value + list2Pointer.value + memo;
+    if (sum >= 10) {
+      memo = Math.floor(sum / 10);
+      sumList.add(sum % 10);
+    } else {
+      sumList.add(sum);
+      memo = 0;
+    }
+    list1Pointer = list1Pointer.next;
+    list2Pointer = list2Pointer.next;
+  }
+  // if (list1Pointer.next === null && list2Pointer.next === null) {
+  //   sum = list1Pointer.value + list2Pointer.value + memo;
+  //   if (sum >= 10) {
+  //     sumList.add(Math.floor(sum / 10));
+  //     sumList.add(sum % 10);
+  //   } else {
+  //     sumList.add(sum);
+  //   }
+  // }
+  return sumList;
+};
+const testListOne = new SinglyList();
+testListOne.add(7);
+testListOne.add(1);
+testListOne.add(6);
+// testListOne.add(3)
 // testListOne.add(6);
 // testListOne.add(1);
 // testListOne.add(4);
+
+const testListTwo = new SinglyList();
+testListTwo.add(5);
+testListTwo.add(9);
+testListTwo.add(2);
+// testListTwo.add(6);
+// testListTwo.add(1);
+// testListTwo.add(4);
 // testListOne.removeAll();
 // testListOne.removeOne(4);
 // testListOne.removeDub();
 // console.log(testListOne.removeMiddle(7));
 // console.log(testListOne.partition(testListOne, 6));
+console.log(sumLists(testListOne, testListTwo));
 
 
 // console.log('testListOne ==>', testListOne);
