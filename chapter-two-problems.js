@@ -157,8 +157,8 @@ const sumLists = function (list1, list2) {
   let memo = 0;
   let sum = 0;
 
-  while (list1Pointer !== null && list2Pointer !== null) {
-    sum = list1Pointer.value + list2Pointer.value + memo;
+  while (list1Pointer !== null || list2Pointer !== null) {
+    sum = (list1Pointer === null ? 0 : list1Pointer.value) + (list2Pointer === null ? 0 : list2Pointer.value) + memo;
     if (sum >= 10) {
       memo = Math.floor(sum / 10);
       sumList.add(sum % 10);
@@ -166,26 +166,17 @@ const sumLists = function (list1, list2) {
       sumList.add(sum);
       memo = 0;
     }
-    list1Pointer = list1Pointer.next;
-    list2Pointer = list2Pointer.next;
+    list1Pointer = list1Pointer === null ? null : list1Pointer.next;
+    list2Pointer = list2Pointer === null ? null : list2Pointer.next;
   }
-  // if (list1Pointer.next === null && list2Pointer.next === null) {
-  //   sum = list1Pointer.value + list2Pointer.value + memo;
-  //   if (sum >= 10) {
-  //     sumList.add(Math.floor(sum / 10));
-  //     sumList.add(sum % 10);
-  //   } else {
-  //     sumList.add(sum);
-  //   }
-  // }
   return sumList;
 };
 const testListOne = new SinglyList();
 testListOne.add(7);
 testListOne.add(1);
 testListOne.add(6);
-// testListOne.add(3)
-// testListOne.add(6);
+testListOne.add(3);
+testListOne.add(6);
 // testListOne.add(1);
 // testListOne.add(4);
 
@@ -201,7 +192,7 @@ testListTwo.add(2);
 // testListOne.removeDub();
 // console.log(testListOne.removeMiddle(7));
 // console.log(testListOne.partition(testListOne, 6));
-console.log(sumLists(testListOne, testListTwo));
+// console.log(sumLists(testListOne, testListTwo));
 
 
 // console.log('testListOne ==>', testListOne);

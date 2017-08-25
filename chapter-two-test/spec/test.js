@@ -3,6 +3,7 @@
 
   describe('Chapter 2 coding challenge test', function () {
     let linkedList = new SinglyList();
+    let linkedList2 = new SinglyList();
 
     describe('Question 2.1', function () {
 
@@ -143,6 +144,58 @@
         expect(sortedLinkedList.findKthToLast(4)).toBe(3);
         expect(sortedLinkedList.findKthToLast(6)).toBe(2);
         expect(sortedLinkedList.length).toBe(6);
+      });
+    });
+
+    describe('Question 2.5', function () {
+      describe('Equal length list test', function () {
+        beforeEach(function () {
+          linkedList.add(7);
+          linkedList.add(1);
+          linkedList.add(6);
+          linkedList2.add(5);
+          linkedList2.add(9);
+          linkedList2.add(2);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+          linkedList2.removeAll();
+        });
+
+        it('Should return linked list sum', function () {
+          let sumListTest = sumLists(linkedList, linkedList2);
+          expect(sumListTest.findKthToLast(2)).toBe(2);
+          expect(sumListTest.findKthToLast(1)).toBe(1);
+          expect(sumListTest.findKthToLast(0)).toBe(9);
+        });
+      });
+
+      describe('Unequal length list test', function () {
+        beforeEach(function () {
+          linkedList.add(7);
+          linkedList.add(1);
+          linkedList.add(6);
+          linkedList.add(3);
+          linkedList.add(6);
+          linkedList2.add(5);
+          linkedList2.add(9);
+          linkedList2.add(2);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+          linkedList2.removeAll();
+        });
+
+        it('Should return linked list sum for unequal length list', function () {
+          let sumListTest2 = sumLists(linkedList, linkedList2);
+          expect(sumListTest2.findKthToLast(0)).toBe(6);
+          expect(sumListTest2.findKthToLast(1)).toBe(3);
+          expect(sumListTest2.findKthToLast(2)).toBe(9);
+          expect(sumListTest2.findKthToLast(3)).toBe(1);
+          expect(sumListTest2.findKthToLast(4)).toBe(2);
+        });
       });
     });
 
