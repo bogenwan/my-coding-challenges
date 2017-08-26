@@ -171,19 +171,38 @@ const sumLists = function (list1, list2) {
   }
   return sumList;
 };
+
+const palindromeList = function (list) {
+  let state = true;
+  let currPointer = list.head;
+  let runnerPointer = list.head;
+  let storage = [];
+
+  while (runnerPointer !== null && runnerPointer.next !== null) {
+    console.log(currPointer.value)
+    storage.push(currPointer.value)
+    currPointer = currPointer.next;
+  console.log(storage)
+    console.log('curr ==>', currPointer.value)
+    runnerPointer = runnerPointer.next.next;
+    console.log('runner ==>', runnerPointer.value)
+  }
+  return state;
+};
+
 const testListOne = new SinglyList();
-testListOne.add(7);
 testListOne.add(1);
-testListOne.add(6);
+testListOne.add(2);
 testListOne.add(3);
-testListOne.add(6);
+testListOne.add(2);
+testListOne.add(1);
 // testListOne.add(1);
 // testListOne.add(4);
 
-const testListTwo = new SinglyList();
-testListTwo.add(5);
-testListTwo.add(9);
-testListTwo.add(2);
+// const testListTwo = new SinglyList();
+// testListTwo.add(5);
+// testListTwo.add(9);
+// testListTwo.add(2);
 // testListTwo.add(6);
 // testListTwo.add(1);
 // testListTwo.add(4);
@@ -193,6 +212,7 @@ testListTwo.add(2);
 // console.log(testListOne.removeMiddle(7));
 // console.log(testListOne.partition(testListOne, 6));
 // console.log(sumLists(testListOne, testListTwo));
+console.log(palindromeList(testListOne));
 
 
 // console.log('testListOne ==>', testListOne);
