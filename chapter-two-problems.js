@@ -179,13 +179,28 @@ const palindromeList = function (list) {
   let storage = [];
 
   while (runnerPointer !== null && runnerPointer.next !== null) {
-    console.log(currPointer.value)
     storage.push(currPointer.value)
     currPointer = currPointer.next;
-  console.log(storage)
-    console.log('curr ==>', currPointer.value)
     runnerPointer = runnerPointer.next.next;
-    console.log('runner ==>', runnerPointer.value)
+  }
+  if (runnerPointer === null) {
+    while (currPointer !== null) {
+      if (currPointer.value !== storage.pop()) {
+        state = false;
+        break;
+      }
+      currPointer = currPointer.next;
+    }
+  }
+  else if (runnerPointer.next === null) {
+    currPointer = currPointer.next
+    while (currPointer !== null) {
+      if (currPointer.value !== storage.pop()) {
+        state = false;
+        break;
+      }
+      currPointer = currPointer.next;
+    }
   }
   return state;
 };
@@ -193,9 +208,9 @@ const palindromeList = function (list) {
 const testListOne = new SinglyList();
 testListOne.add(1);
 testListOne.add(2);
-testListOne.add(3);
-testListOne.add(2);
 testListOne.add(1);
+testListOne.add(1);
+// testListOne.add(1);
 // testListOne.add(1);
 // testListOne.add(4);
 
