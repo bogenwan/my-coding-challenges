@@ -199,5 +199,54 @@
       });
     });
 
+    describe('Question 2.6', function () {
+      describe('Test odd length list', function () {
+        beforeEach(function () {
+          linkedList.add(1);
+          linkedList.add(2);
+          linkedList.add(3);
+          linkedList.add(2);
+          linkedList.add(1);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+        });
+
+        it('Should return true if odd length list is palindrome', function () {
+          expect(palindromeList(linkedList)).toBe(true);
+        });
+
+        it('Should return true if odd length list is not palindrome', function () {
+          linkedList.add(2);
+          linkedList.add(3);
+          expect(palindromeList(linkedList)).toBe(false);
+        });
+      });
+
+      describe('Test even number list', function () {
+        beforeEach(function () {
+          linkedList.add(1);
+          linkedList.add(2);
+          linkedList.add(2);
+          linkedList.add(1);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+        });
+
+        it('Should return true if even length list is palindrome', function () {
+          expect(palindromeList(linkedList)).toBe(true);
+        });
+
+        it('Should return false if even length list is not a palindrome', function () {
+          linkedList.add(3);
+          linkedList.add(4);
+          expect(palindromeList(linkedList)).toBe(false);
+        });
+      });
+    });
+
   });
 })();

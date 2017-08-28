@@ -205,20 +205,25 @@ const palindromeList = function (list) {
   return state;
 };
 
+const intersectionList = function (list1, list2) {
+  let storage = [];
+  return storage;
+};
+
 const testListOne = new SinglyList();
 testListOne.add(1);
 testListOne.add(2);
-testListOne.add(1);
-testListOne.add(1);
+testListOne.add(3);
+testListOne.add(4);
 // testListOne.add(1);
 // testListOne.add(1);
 // testListOne.add(4);
 
-// const testListTwo = new SinglyList();
-// testListTwo.add(5);
-// testListTwo.add(9);
-// testListTwo.add(2);
-// testListTwo.add(6);
+const testListTwo = new SinglyList();
+testListTwo.add(5);
+testListTwo.add(6);
+testListTwo.add(2);
+testListTwo.add(7);
 // testListTwo.add(1);
 // testListTwo.add(4);
 // testListOne.removeAll();
@@ -227,7 +232,8 @@ testListOne.add(1);
 // console.log(testListOne.removeMiddle(7));
 // console.log(testListOne.partition(testListOne, 6));
 // console.log(sumLists(testListOne, testListTwo));
-console.log(palindromeList(testListOne));
+// console.log(palindromeList(testListOne));
+console.log(intersectionList(testListOne, testListTwo));
 
 
 // console.log('testListOne ==>', testListOne);
