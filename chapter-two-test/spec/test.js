@@ -248,5 +248,84 @@
       });
     });
 
+    describe('Question 2.7', function () {
+      describe('Test on non intersecting even list', function () {
+
+        beforeEach(function () {
+          linkedList.add(1);
+          linkedList.add(2);
+          linkedList.add(3);
+          linkedList.add(4);
+          linkedList.add(5);
+          linkedList2.add(6);
+          linkedList2.add(7);
+          linkedList2.add(3);
+          linkedList2.add(4);
+          linkedList2.add(5);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+          linkedList2.removeAll();
+        });
+
+        it('Should return a message if no intersection found on an even list', function () {
+          expect(intersectionList(linkedList, linkedList2)).toBe('No intersection found in both list!');
+        });
+      });
+
+      describe('Test on non intersecting uneven list', function () {
+        beforeEach(function () {
+          linkedList.add(1);
+          linkedList.add(2);
+          linkedList.add(3);
+          linkedList.add(4);
+          linkedList.add(5);
+          linkedList2.add(8);
+          linkedList2.add(6);
+          linkedList2.add(7);
+          linkedList2.add(3);
+          linkedList2.add(4);
+          linkedList2.add(5);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+          linkedList2.removeAll();
+        });
+
+        it('Should return a message if no intersection found on an uneven list', function () {
+          expect(intersectionList(linkedList, linkedList2)).toBe('No intersection found in both list!');
+        });
+      });
+
+      describe('Test on intersecting even linked list', function () {
+        beforeEach(function () {
+          linkedList.add(9);
+          linkedList.add(1);
+          linkedList.add(3);
+          linkedList.add(8);
+          linkedList.add(2);
+          linkedList.add(4);
+          linkedList.add(7);
+          linkedList2.add(5);
+          linkedList2.add(6);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+          linkedList2.removeAll();
+        });
+
+        it('Should return the intersecting node', function () {
+          let linkedList2Pointer = linkedList2.head.next;
+          let linkedListPointer = linkedList.head.next.next.next;
+          linkedList2Pointer.next = linkedListPointer.next;
+          linkedList2.length = 5;
+          expect(intersectionList(linkedList, linkedList2)).toBe(linkedListPointer.next);
+        });
+      });
+    });
+
   });
 })();

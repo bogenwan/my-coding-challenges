@@ -226,7 +226,7 @@ const intersectionList = function (list1, list2) {
   while (pointer1 !== null) {
       console.log('pointer1 ==>', pointer1)
       console.log('pointer2 ==>', pointer2)
-    if (pointer1.value == pointer2.value) {
+    if (pointer1 == pointer2) {
       // storage.push(pointer1);
       return pointer1;
     }
