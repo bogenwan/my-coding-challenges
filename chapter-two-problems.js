@@ -206,26 +206,55 @@ const palindromeList = function (list) {
 };
 
 const intersectionList = function (list1, list2) {
-  let storage = [];
-  return storage;
+  // let storage = [ ];
+  let pointer1 = list1.head;
+  let pointer2 = list2.head;
+  let lengthDiff = Math.abs(list1.length - list2.length);
+  // fine the equal starting point and move the pointer to even position, ignore the extra node
+  if (list1.length > list2.length) {
+    // console.log('list one longer')
+    for (let i = 0; i < lengthDiff; i++) {
+      pointer1 = pointer1.next;
+    }
+  }
+  if (list2.length > list1.length) {
+    // console.log('list2 is longer')
+    for (let i = 0; i < lengthDiff; i++) {
+      pointer2 = pointer2.next;
+    }
+  }
+  while (pointer1 !== null) {
+      console.log('pointer1 ==>', pointer1)
+      console.log('pointer2 ==>', pointer2)
+    if (pointer1.value == pointer2.value) {
+      // storage.push(pointer1);
+      return pointer1;
+    }
+    pointer1 = pointer1.next;
+    pointer2 = pointer2.next;
+  }
+  // console.log(pointer2.value)
+  // console.log(pointer1.value)
+  return 'No intersection found in both list!';
 };
 
 const testListOne = new SinglyList();
+testListOne.add(9);
 testListOne.add(1);
-testListOne.add(2);
 testListOne.add(3);
+testListOne.add(8);
+testListOne.add(2);
 testListOne.add(4);
-// testListOne.add(1);
-// testListOne.add(1);
-// testListOne.add(4);
+testListOne.add(7);
 
 const testListTwo = new SinglyList();
+// testListTwo.add(1);
+// testListTwo.add(8);
 testListTwo.add(5);
 testListTwo.add(6);
-testListTwo.add(2);
-testListTwo.add(7);
-// testListTwo.add(1);
+// testListTwo.add(2);
 // testListTwo.add(4);
+// testListTwo.add(7);
 // testListOne.removeAll();
 // testListOne.removeOne(4);
 // testListOne.removeDub();
@@ -233,6 +262,13 @@ testListTwo.add(7);
 // console.log(testListOne.partition(testListOne, 6));
 // console.log(sumLists(testListOne, testListTwo));
 // console.log(palindromeList(testListOne));
+let testListTwoPointer = testListTwo.head.next;
+// console.log(testListTwoPointer);
+let testListOnePointer = testListOne.head.next.next.next;
+// console.log(testListOnePointer);
+testListTwoPointer.next = testListOnePointer.next;
+testListTwo.length = 5;
+// console.log(testListTwo)
 console.log(intersectionList(testListOne, testListTwo));
 
 
