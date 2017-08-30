@@ -325,6 +325,54 @@
           expect(intersectionList(linkedList, linkedList2)).toBe(linkedListPointer.next);
         });
       });
+
+      describe('Test on intersecting uneven linked list', function () {
+        beforeEach(function () {
+          linkedList.add(1);
+          linkedList.add(3);
+          linkedList.add(8);
+          linkedList.add(2);
+          linkedList.add(4);
+          linkedList.add(7);
+          linkedList2.add(5);
+          linkedList2.add(6);
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+          linkedList2.removeAll();
+        });
+
+        it('Should return the intersecting node', function () {
+          let linkedList2Pointer = linkedList2.head.next;
+          let linkedListPointer = linkedList.head.next.next;
+          linkedList2Pointer.next = linkedListPointer.next;
+          linkedList2.length = 5;
+          expect(intersectionList(linkedList, linkedList2)).toBe(linkedListPointer.next);
+        });
+      });
+    });
+
+    describe('Question 2.8', function () {
+      describe('Circular linked list test', function () {
+        beforeEach(function () {
+          linkedList.add(1);
+          linkedList.add(2);
+          linkedList.add(3);
+          linkedList.add(4);
+          linkedList.add(5);
+          let listPointer = linkedList.head.next.next.next.next;
+          listPointer.next = linkedList.head.next.next;
+        });
+
+        afterEach(function () {
+          linkedList.removeAll();
+        });
+
+        it('Should return the node where the circulation begins', function () {
+          expect(circularList(linkedList)).toBe(linkedList.head.next.next);
+        });
+      });
     });
 
   });
