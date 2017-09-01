@@ -13,7 +13,7 @@ class Stack {
     delete this.storage[this.length -1];
     if (this.length >= 1) {
       this.length--;
-    };
+    }
   };
 
   size () {
@@ -31,10 +31,11 @@ class Stack {
 // testStack.pop();
 // testStack.size();
 // console.log(testStack.peek());
+
 class tripleStack {
   constructor (size) {
     this.storage = new Array(3 * size);
-    this.length = size;
+    // this.length = size;
     this.stackTracker = {};
   };
 
@@ -50,14 +51,36 @@ class tripleStack {
         this.storage[currStack + currStackPointer] = value;
         this.stackTracker[currStack] = currStackPointer + 1 ;
       } else {
-        console.log('This stack is full, please try another stack!');
+        console.log(`Stack number ${stackNum} is full, please try another stack!`);
         return;
       }
     }
     else {
       this.storage[currStack] = value;
       this.stackTracker[currStack] = 1;
-    };
+    }
+  };
+
+  pop (stackNum) {
+    let currStack = (stackNum * 3) - 3;
+    if (this.stackTracker[currStack] === 0) {
+      console.log(`Stack number ${stackNum} is empty!`)
+      return;
+    }
+    let innerStackPointer = this.stackTracker[currStack] - 1;
+    let poped = this.storage[currStack + innerStackPointer];
+    let splicePosition = currStack + innerStackPointer;
+    this.storage.splice(splicePosition, 1);
+    this.stackTracker[currStack] = innerStackPointer--;
+  };
+
+  peek (stackNum) {
+    let currStack = (stackNum * 3) - 3;
+    if (this.stackTracker[currStack] === 0) {
+      console.log(`Stack number ${stackNum} is empty!`);
+      return;
+    }
+    let innerPointer = currStack + this.stackTracker[currStack] - 1;
   };
 };
 
@@ -72,5 +95,19 @@ es6Stack.push(3, 'g');
 es6Stack.push(4, 'h');
 es6Stack.push(4, 'hi');
 es6Stack.push(4, 'hiii');
-es6Stack.push(4, 'hiiii');
+// es6Stack.push(4, 'hiiii');
+es6Stack.push(3, 'jk');
+es6Stack.push(3, 'et');
+es6Stack.pop(2);
+es6Stack.pop(2);
+es6Stack.pop(2);
+es6Stack.peek(1);
+es6Stack.pop(1);
+es6Stack.peek(1);
+es6Stack.pop(1);
+es6Stack.peek(1)
+es6Stack.pop(1);
+es6Stack.peek(1);
+es6Stack.push(1, 'z');
+
 console.log(es6Stack);
