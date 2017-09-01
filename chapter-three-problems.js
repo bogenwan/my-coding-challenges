@@ -34,7 +34,7 @@ class Stack {
 
 class tripleStack {
   constructor (size) {
-    this.storage = new Array(3 * size);
+    this.storage = [];
     // this.length = size;
     this.stackTracker = {};
   };
@@ -72,15 +72,22 @@ class tripleStack {
     let splicePosition = currStack + innerStackPointer;
     this.storage.splice(splicePosition, 1);
     this.stackTracker[currStack] = innerStackPointer--;
+    return poped;
   };
 
   peek (stackNum) {
     let currStack = (stackNum * 3) - 3;
     if (this.stackTracker[currStack] === 0) {
       console.log(`Stack number ${stackNum} is empty!`);
-      return;
+      return `Stack number ${stackNum} is empty!`;
     }
     let innerPointer = currStack + this.stackTracker[currStack] - 1;
+    return this.storage[innerPointer];
+  };
+
+  popAll () {
+    this.storage.length = 0;
+    this.stackTracker = {};
   };
 };
 
@@ -101,13 +108,14 @@ es6Stack.push(3, 'et');
 es6Stack.pop(2);
 es6Stack.pop(2);
 es6Stack.pop(2);
-es6Stack.peek(1);
+// es6Stack.peek(1);
 es6Stack.pop(1);
-es6Stack.peek(1);
+// es6Stack.peek(1);
 es6Stack.pop(1);
-es6Stack.peek(1)
+// es6Stack.peek(1)
 es6Stack.pop(1);
-es6Stack.peek(1);
-es6Stack.push(1, 'z');
+// es6Stack.peek(1);
+// es6Stack.push(1, 'z');
+// es6Stack.popAll();
 
-console.log(es6Stack);
+// console.log(es6Stack);
