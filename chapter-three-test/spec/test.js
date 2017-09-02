@@ -48,5 +48,69 @@
       });
     });
 
+    describe('Question 3.2', function () {
+      describe('Stack with min() functionality test', function () {
+
+        afterEach(function () {
+          stack1.popAll();
+        });
+
+        it('Should push min value to minStorage stack', function () {
+          stack1.push(7);
+          stack1.push(5);
+          stack1.push(8);
+          expect(stack1.minStorage[1]).toBe(5);
+          expect(stack1.minStorage[0]).toBe(7);
+        });
+
+        it('Should pop min value in minStorage accordingly', function () {
+          stack1.push(7);
+          stack1.push(5);
+          stack1.push(8);
+          stack1.push(9);
+          stack1.push(5);
+          stack1.push(2);
+          stack1.pop();
+          expect(stack1.minStorage[2]).toBe(5);
+          stack1.pop();
+          expect(stack1.minStorage[1]).toBe(5);
+          stack1.pop();
+          stack1.pop();
+          expect(stack1.minStorage[1]).toBe(5);
+          stack1.pop();
+          expect(stack1.minStorage[1]).toBe(undefined);
+          expect(stack1.minStorage[0]).toBe(7);
+        });
+      });
+
+      describe('Stack peekMin() functionality test', function () {
+        beforeEach(function () {
+          stack1.push(7);
+          stack1.push(5);
+          stack1.push(8);
+          stack1.push(9);
+          stack1.push(5);
+          stack1.push(2);
+        });
+
+        afterEach(function () {
+          stack1.popAll();
+        });
+
+        it('Should return current min value', function () {
+          expect(stack1.peekMin()).toBe(2);
+          stack1.pop();
+          expect(stack1.peekMin()).toBe(5);
+          stack1.pop();
+          stack1.pop();
+          expect(stack1.peekMin()).toBe(5);
+          stack1.pop();
+          expect(stack1.peekMin()).toBe(5);
+          stack1.pop();
+          expect(stack1.peekMin()).toBe(7);
+        });
+      });
+    });
+
   });
 })();
