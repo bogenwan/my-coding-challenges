@@ -3,7 +3,7 @@
 
   describe('Chapter 3 coding challenge test', function () {
     let stack1 = new Stack();
-    let tripleStack1 = new tripleStack(4);
+    let tripleStack1 = new TripleStack(4);
 
     describe('Question 3.1', function () {
       describe('Triple stack functionality test', function () {

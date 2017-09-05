@@ -1,5 +1,5 @@
 
-class tripleStack {
+class TripleStack {
   constructor (size) {
     this.storage = [];
     this.stackTracker = {};
@@ -57,7 +57,7 @@ class tripleStack {
   };
 };
 
-// var es6Stack = new tripleStack(4);
+// var es6Stack = new TripleStack(4);
 // es6Stack.push(1, 'a');
 // es6Stack.push(1, 'b');
 // es6Stack.push(1, 'c');
@@ -154,3 +154,46 @@ class Stack {
 // testStack.popAll();
 // console.log(testStack.peekMin());
 // console.log(testStack);
+
+class SetOfStack {
+  constructor (num) {
+    this.storage = {};
+    this.subStackCompacity = num -1;
+    // this.subStack = {};
+    this.subStackCounter = 0;
+    this.subStackStorage = 0;
+  };
+
+  push (value) {
+    if (!this.storage[this.subStackCounter]) {
+      this.storage[this.subStackCounter] = {};
+      let subStack = this.storage[this.subStackCounter];
+      subStack[this.subStackStorage] = value;
+      this.subStackStorage++;
+      // console.log(this.subStackStorage)
+    } else if (this.storage[this.subStackCounter] && this.subStackStorage <= this.subStackCompacity) {
+      let subStack = this.storage[this.subStackCounter];
+      // console.log(subStack)
+      subStack[this.subStackStorage] = value;
+      this.subStackStorage++;
+    } else {
+      this.subStackStorage = 0;
+      this.subStackCounter++;
+      this.storage[this.subStackCounter] = {};
+      let subStack = this.storage[this.subStackCounter];
+      subStack[this.subStackStorage] = value;
+    }
+  };
+
+};
+
+var setOfStack1 = new SetOfStack(3);
+setOfStack1.push('a');
+setOfStack1.push('b');
+setOfStack1.push('c');
+setOfStack1.push('d');
+setOfStack1.push('e');
+setOfStack1.push('f');
+setOfStack1.push('g');
+setOfStack1.push('h');
+console.log(setOfStack1.storage);
