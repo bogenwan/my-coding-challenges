@@ -159,7 +159,6 @@ class SetOfStack {
   constructor (num) {
     this.storage = {};
     this.subStackCompacity = num -1;
-    // this.subStack = {};
     this.subStackCounter = 0;
     this.subStackStorage = 0;
   };
@@ -185,6 +184,41 @@ class SetOfStack {
     }
   };
 
+  pop () {
+    if (!this.storage[this.subStackCounter]) {
+      let message = 'setOfStack is empty!';
+      console.log(message);
+      return message;
+    }
+    let subStack = this.storage[this.subStackCounter];
+    let popped = subStack[this.subStackStorage];
+    if (this.subStackStorage === 0) {
+      delete subStack[this.subStackStorage];
+      delete this.storage[this.subStackCounter];
+      if (this.subStackCounter > 0) {
+        this.subStackCounter--;
+      }
+      this.subStackStorage = this.subStackCompacity;
+      return popped;
+    }
+    delete subStack[this.subStackStorage];
+    if (this.subStackStorage > 0) {
+      this.subStackStorage--;
+    }
+    return popped;
+  };
+
+  peek () {
+    if (!this.stroage[this.subStackCounter]) {
+      let message = 'setOfStack is empty!';
+      console.log(message);
+      return message;
+    } else {
+      let subStack = this.storage[this.subStackCounter];
+      return subStack[this.subStackStorage];
+    }
+  };
+
 };
 
 var setOfStack1 = new SetOfStack(3);
@@ -196,4 +230,14 @@ setOfStack1.push('e');
 setOfStack1.push('f');
 setOfStack1.push('g');
 setOfStack1.push('h');
+setOfStack1.pop();
+setOfStack1.pop();
+setOfStack1.pop();
+setOfStack1.pop();
+setOfStack1.pop();
+// setOfStack1.pop();
+// setOfStack1.pop();
+// setOfStack1.pop();
+console.log(setOfStack1.storage);
+console.log(setOfStack1.pop());
 console.log(setOfStack1.storage);
