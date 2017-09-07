@@ -4,6 +4,7 @@
   describe('Chapter 3 coding challenge test', function () {
     let stack1 = new Stack();
     let tripleStack1 = new TripleStack(4);
+    let setOfStack1 = new SetOfStack(3);
 
     describe('Question 3.1', function () {
       describe('Triple stack functionality test', function () {
@@ -108,6 +109,71 @@
           expect(stack1.peekMin()).toBe(5);
           stack1.pop();
           expect(stack1.peekMin()).toBe(7);
+        });
+      });
+    });
+
+    describe('Question 3.3', function () {
+      describe('SetOfStack push() functionality', function () {
+
+        beforeEach(function () {
+          setOfStack1.push('a');
+          setOfStack1.push('b');
+          setOfStack1.push('c');
+          setOfStack1.push('d');
+          setOfStack1.push('e');
+        });
+
+        afterEach(function () {
+          setOfStack1.popAll();
+        });
+
+        it('Should add value to stack, when full it create a new substack and store additional value', function () {
+          let subStack = setOfStack1.storage[setOfStack1.subStackCounter];
+          expect(subStack[0]).toBe('d');
+          expect(subStack[1]).toBe('e');
+        });
+      });
+
+      describe('SetOfStack pop() functionality', function () {
+
+        beforeEach(function() {
+          setOfStack1.push('a');
+          setOfStack1.push('b');
+          setOfStack1.push('c');
+          setOfStack1.push('d');
+          setOfStack1.push('e');
+        });
+
+        afterEach(function () {
+          setOfStack1.popAll();
+        });
+
+        it('Should pop value from stack, once current stack is empty and if privious exist, it will pop item from previous stack', function () {
+          expect(setOfStack1.pop()).toBe('e');
+          expect(setOfStack1.pop()).toBe('d');
+          expect(setOfStack1.pop()).toBe('c');
+          expect(setOfStack1.pop()).toBe('b');
+          expect(setOfStack1.pop()).toBe('a');
+          expect(setOfStack1.pop()).toBe('setOfStack is empty!');
+        });
+      });
+
+      describe('SetOfStack peek() functionality', function () {
+
+        afterEach(function () {
+          setOfStack1.popAll();
+        });
+
+        it('Should return the last value', function () {
+          expect(setOfStack1.peek()).toBe('setOfStack is empty!');
+        });
+
+        it('Should return the last value', function () {
+          setOfStack1.push('a');
+          setOfStack1.push('b');
+          setOfStack1.push('c');
+          expect(setOfStack1.peek()).toBe('c');
         });
       });
     });

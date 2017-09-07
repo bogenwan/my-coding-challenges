@@ -158,7 +158,8 @@ class Stack {
 class SetOfStack {
   constructor (num) {
     this.storage = {};
-    this.subStackCompacity = num -1;
+    this.compacity = num;
+    this.subStackCompacity = this.compacity -1;
     this.subStackCounter = 0;
     this.subStackStorage = 0;
   };
@@ -169,18 +170,17 @@ class SetOfStack {
       let subStack = this.storage[this.subStackCounter];
       subStack[this.subStackStorage] = value;
       this.subStackStorage++;
-      // console.log(this.subStackStorage)
     } else if (this.storage[this.subStackCounter] && this.subStackStorage <= this.subStackCompacity) {
       let subStack = this.storage[this.subStackCounter];
-      // console.log(subStack)
       subStack[this.subStackStorage] = value;
       this.subStackStorage++;
-    } else {
+    } else if (this.storage[this.subStackCounter] && this.subStackStorage  > this.subStackCompacity) {
       this.subStackStorage = 0;
       this.subStackCounter++;
       this.storage[this.subStackCounter] = {};
       let subStack = this.storage[this.subStackCounter];
       subStack[this.subStackStorage] = value;
+      this.subStackStorage++;
     }
   };
 
@@ -190,33 +190,42 @@ class SetOfStack {
       console.log(message);
       return message;
     }
-    let subStack = this.storage[this.subStackCounter];
-    let popped = subStack[this.subStackStorage];
-    if (this.subStackStorage === 0) {
-      delete subStack[this.subStackStorage];
-      delete this.storage[this.subStackCounter];
-      if (this.subStackCounter > 0) {
+    if (this.storage[this.subStackCounter] && this.subStackStorage > 0) {
+      let subStack = this.storage[this.subStackCounter];
+      let popped = subStack[this.subStackStorage - 1];
+      delete subStack[this.subStackStorage - 1];
+      this.subStackStorage--;
+      if (this.subStackStorage === 0) {
+        delete this.storage[this.subStackCounter];
         this.subStackCounter--;
+        this.subStackStorage = this.subStackCompacity + 1;
       }
-      this.subStackStorage = this.subStackCompacity;
+      if (!this.storage[this.subStackCounter]) {
+        this.storage = {};
+        this.subStackCompacity = this.compacity -1;
+        this.subStackCounter = 0;
+        this.subStackStorage = 0;
+      }
       return popped;
     }
-    delete subStack[this.subStackStorage];
-    if (this.subStackStorage > 0) {
-      this.subStackStorage--;
-    }
-    return popped;
   };
 
   peek () {
-    if (!this.stroage[this.subStackCounter]) {
+    if (Object.keys(this.storage).length  === 0) {
       let message = 'setOfStack is empty!';
       console.log(message);
       return message;
     } else {
       let subStack = this.storage[this.subStackCounter];
-      return subStack[this.subStackStorage];
+      return subStack[this.subStackStorage -1];
     }
+  };
+
+  popAll () {
+    this.storage = {};
+    this.subStackCompacity = this.compacity -1;
+    this.subStackCounter = 0;
+    this.subStackStorage = 0;
   };
 
 };
@@ -228,16 +237,26 @@ setOfStack1.push('c');
 setOfStack1.push('d');
 setOfStack1.push('e');
 setOfStack1.push('f');
-setOfStack1.push('g');
-setOfStack1.push('h');
+// setOfStack1.push('g');
+// setOfStack1.push('h');
+setOfStack1.pop();
 setOfStack1.pop();
 setOfStack1.pop();
 setOfStack1.pop();
 setOfStack1.pop();
 setOfStack1.pop();
 // setOfStack1.pop();
+// setOfStack1.popAll();
+// setOfStack1.push('z');
+// setOfStack1.push('v');
+// setOfStack1.push('w');
+// setOfStack1.push('x');
+// setOfStack1.push('k');
 // setOfStack1.pop();
 // setOfStack1.pop();
-console.log(setOfStack1.storage);
-console.log(setOfStack1.pop());
-console.log(setOfStack1.storage);
+// setOfStack1.pop();
+// console.log(setOfStack1.storage);
+// console.log(setOfStack1.pop());
+// console.log(setOfStack1.storage);
+// console.log(setOfStack1.pop());
+// console.log(setOfStack1.storage);
