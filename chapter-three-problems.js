@@ -230,21 +230,19 @@ class SetOfStack {
 
 };
 
-var setOfStack1 = new SetOfStack(3);
-setOfStack1.push('a');
-setOfStack1.push('b');
-setOfStack1.push('c');
-setOfStack1.push('d');
-setOfStack1.push('e');
-setOfStack1.push('f');
-// setOfStack1.push('g');
-// setOfStack1.push('h');
-setOfStack1.pop();
-setOfStack1.pop();
-setOfStack1.pop();
-setOfStack1.pop();
-setOfStack1.pop();
-setOfStack1.pop();
+// var setOfStack1 = new SetOfStack(3);
+// setOfStack1.push('a');
+// setOfStack1.push('b');
+// setOfStack1.push('c');
+// setOfStack1.push('d');
+// setOfStack1.push('e');
+// setOfStack1.push('f');
+// setOfStack1.pop();
+// setOfStack1.pop();
+// setOfStack1.pop();
+// setOfStack1.pop();
+// setOfStack1.pop();
+// setOfStack1.pop();
 // setOfStack1.pop();
 // setOfStack1.popAll();
 // setOfStack1.push('z');
@@ -260,3 +258,15 @@ setOfStack1.pop();
 // console.log(setOfStack1.storage);
 // console.log(setOfStack1.pop());
 // console.log(setOfStack1.storage);
+class BasicStack {
+  constructor () {
+    this.storage = {};
+  }
+};
+
+class QueueViaStack {
+  constructor (size) {
+  this.storage = {};
+  this.stack1 = new Stack
+  };
+};
