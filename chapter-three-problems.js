@@ -86,7 +86,7 @@ class TripleStack {
 
 // console.log(es6Stack);
 
-class Stack {
+class MinStack {
   constructor () {
     this.storage = {};
     this.minStorage = {};
@@ -138,7 +138,7 @@ class Stack {
     this.length = 0;
   };
 };
-// var testStack = new Stack();
+// var testStack = new MinStack();
 // testStack.push(7);
 // testStack.push(5);
 // testStack.push(8);
@@ -258,15 +258,53 @@ class SetOfStack {
 // console.log(setOfStack1.storage);
 // console.log(setOfStack1.pop());
 // console.log(setOfStack1.storage);
-class BasicStack {
+class Stack {
   constructor () {
     this.storage = {};
-  }
+    this.length = 0;
+  };
+
+  push (value) {
+    this.storage[this.length] = value;
+    this.length++;
+  };
+
+  pop () {
+    let poped = this.storage[this.length -1];
+    delete this.storage[this.length -1];
+    if (this.length > 0) {
+      this.length--;
+    }
+    return poped;
+  };
+
+  peek () {
+    return this.storage[this.length];
+  };
+
+  getSize () {
+    return this.length;
+  };
 };
 
 class QueueViaStack {
   constructor (size) {
-  this.storage = {};
-  this.stack1 = new Stack
+    this.inputStack = new Stack();
+    this.inputStack = new Stack();
+  };
+
+  enqueue (value) {
+    this.inputStack.push('a');
+  };
+
+  dequeue () {
+    this.inputStack.pop();
   };
 };
+
+queueViaStack1 = new QueueViaStack();
+queueViaStack1.enqueue('a');
+queueViaStack1.dequeue();
+// console.log(queueViaStack1.dequeue());
+
+console.log(queueViaStack1);

@@ -2,7 +2,7 @@
   'use strict';
 
   describe('Chapter 3 coding challenge test', function () {
-    let stack1 = new Stack();
+    let stack1 = new MinStack();
     let tripleStack1 = new TripleStack(4);
     let setOfStack1 = new SetOfStack(3);
 
