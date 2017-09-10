@@ -290,21 +290,42 @@ class Stack {
 class QueueViaStack {
   constructor (size) {
     this.inputStack = new Stack();
-    this.inputStack = new Stack();
+    this.outputStack = new Stack();
   };
 
   enqueue (value) {
-    this.inputStack.push('a');
+    this.inputStack.push(value);
   };
 
   dequeue () {
-    this.inputStack.pop();
+    // console.log('input size ==>', this.inputStack.getSize());
+    // console.log('outputStack size ==>', this.outputStack.getSize());
+    if (!this.outputStack.getSize() && !this.inputStack.getSize()) {
+      console.log('Queue is empty!');
+      return 'Queue is empty!';
+      // return 'Queue is empty!';
+    }
+    if (!this.outputStack.getSize() && this.inputStack.getSize()) {
+      while (this.inputStack.getSize()) {
+        this.outputStack.push(this.inputStack.pop());
+      }
+    }
+    this.outputStack.pop();
+    // console.log('after pop', this.outputStack.length);
   };
 };
 
 queueViaStack1 = new QueueViaStack();
 queueViaStack1.enqueue('a');
+queueViaStack1.enqueue('b');
+queueViaStack1.enqueue('c');
+queueViaStack1.enqueue('d');
 queueViaStack1.dequeue();
+queueViaStack1.dequeue();
+queueViaStack1.dequeue();
+queueViaStack1.dequeue();
+queueViaStack1.dequeue();
+// console.log(queueViaStack1.dequeue());
 // console.log(queueViaStack1.dequeue());
 
 console.log(queueViaStack1);
