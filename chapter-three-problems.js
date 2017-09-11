@@ -279,7 +279,7 @@ class Stack {
   };
 
   peek () {
-    return this.storage[this.length];
+    return this.storage[this.length -1];
   };
 
   getSize () {
@@ -310,21 +310,35 @@ class QueueViaStack {
         this.outputStack.push(this.inputStack.pop());
       }
     }
-    this.outputStack.pop();
+    return this.outputStack.pop();
     // console.log('after pop', this.outputStack.length);
+  };
+
+  dequeueAll () {
+    this.inputStack = new Stack();
+    this.outputStack = new Stack();
   };
 };
 
 queueViaStack1 = new QueueViaStack();
 queueViaStack1.enqueue('a');
-queueViaStack1.enqueue('b');
-queueViaStack1.enqueue('c');
-queueViaStack1.enqueue('d');
+// queueViaStack1.enqueue('b');
+// queueViaStack1.enqueue('c');
+// queueViaStack1.enqueue('d');
 queueViaStack1.dequeue();
-queueViaStack1.dequeue();
-queueViaStack1.dequeue();
-queueViaStack1.dequeue();
-queueViaStack1.dequeue();
+// queueViaStack1.enqueue('e');
+// queueViaStack1.dequeue();
+// queueViaStack1.enqueue('f');
+// queueViaStack1.dequeue();
+// queueViaStack1.dequeue();
+// queueViaStack1.dequeue();
+// queueViaStack1.dequeue();
+// queueViaStack1.dequeue();
+// queueViaStack1.enqueue('g');
+// queueViaStack1.dequeueAll();
+// queueViaStack1.dequeue();
+// queueViaStack1.dequeue();
+
 // console.log(queueViaStack1.dequeue());
 // console.log(queueViaStack1.dequeue());
 

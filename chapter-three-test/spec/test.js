@@ -5,6 +5,7 @@
     let stack1 = new MinStack();
     let tripleStack1 = new TripleStack(4);
     let setOfStack1 = new SetOfStack(3);
+    let queueViaStack1 = new QueueViaStack();
 
     describe('Question 3.1', function () {
       describe('Triple stack functionality test', function () {
@@ -174,6 +175,49 @@
           setOfStack1.push('b');
           setOfStack1.push('c');
           expect(setOfStack1.peek()).toBe('c');
+        });
+      });
+    });
+
+    describe('Question 3.4', function () {
+      describe('Test enqueue functionality', function () {
+
+        beforeEach(function () {
+          queueViaStack1.enqueue('a');
+          queueViaStack1.enqueue('b');
+          queueViaStack1.enqueue('c');
+        });
+
+        afterEach(function () {
+          queueViaStack1.dequeueAll();
+        });
+
+        it('Should enqueue values', function () {
+          expect(queueViaStack1.inputStack.peek()).toBe('c');
+        });
+      });
+
+      describe('Test dequeue functionality', function () {
+
+        beforeEach(function () {
+          queueViaStack1.enqueue('a');
+          queueViaStack1.enqueue('b');
+          queueViaStack1.enqueue('c');
+          queueViaStack1.enqueue('d');
+        });
+
+        afterEach(function () {
+          queueViaStack1.dequeueAll();
+        });
+
+        it('Should dequeue the first entered value', function () {
+          queueViaStack1.enqueue('f')
+          expect(queueViaStack1.dequeue()).toBe('a');
+          expect(queueViaStack1.dequeue()).toBe('b');
+          expect(queueViaStack1.dequeue()).toBe('c');
+          expect(queueViaStack1.dequeue()).toBe('d');
+          expect(queueViaStack1.dequeue()).toBe('f');
+          expect(queueViaStack1.dequeue()).toBe('Queue is empty!');
         });
       });
     });
