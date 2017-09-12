@@ -285,6 +285,11 @@ class Stack {
   getSize () {
     return this.length;
   };
+
+  popAll () {
+    this.storage = {};
+    this.length = 0;
+  };
 };
 
 class QueueViaStack {
@@ -320,12 +325,12 @@ class QueueViaStack {
   };
 };
 
-queueViaStack1 = new QueueViaStack();
-queueViaStack1.enqueue('a');
+// queueViaStack1 = new QueueViaStack();
+// queueViaStack1.enqueue('a');
 // queueViaStack1.enqueue('b');
 // queueViaStack1.enqueue('c');
 // queueViaStack1.enqueue('d');
-queueViaStack1.dequeue();
+// queueViaStack1.dequeue();
 // queueViaStack1.enqueue('e');
 // queueViaStack1.dequeue();
 // queueViaStack1.enqueue('f');
@@ -338,8 +343,39 @@ queueViaStack1.dequeue();
 // queueViaStack1.dequeueAll();
 // queueViaStack1.dequeue();
 // queueViaStack1.dequeue();
-
 // console.log(queueViaStack1.dequeue());
 // console.log(queueViaStack1.dequeue());
 
-console.log(queueViaStack1);
+// console.log(queueViaStack1);
+
+const sortStack = function (stack) {
+  let helperStack = new Stack();
+  let curr;
+  while (stack.length) {
+    if (!helperStack.length) {
+      helperStack.push(stack.pop());
+    }
+    curr = stack.peek();
+    if (curr < helperStack.peek()) {
+      helperStack.push(stack.pop());
+    } else {
+      let temp = stack.pop();
+      while (helperStack.length) {
+        stack.push(helperStack.pop());
+      }
+      helperStack.push(temp);
+    }
+  }
+  return helperStack;
+};
+
+// var testStack1 = new Stack();
+// testStack1.push(4);
+// testStack1.push(2);
+// testStack1.push(3);
+// testStack1.push(1);
+// var sortedStack1 = sortStack(testStack1);
+// sortedStack1.popAll();
+// console.log(sortedStack1);
+// sortedStack1.pop();
+// console.log( sortedStack1)

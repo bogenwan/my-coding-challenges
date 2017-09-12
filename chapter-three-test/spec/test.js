@@ -222,5 +222,28 @@
       });
     });
 
+    describe('Question 3.5', function () {
+      describe('sortedStack test', function () {
+        it('Should sort the stack with lowest value at top', function () {
+          let testStack1 = new Stack();
+          testStack1.push(7);
+          testStack1.push(79);
+          testStack1.push(3);
+          testStack1.push(5);
+          testStack1.push(10);
+          testStack1.push(66);
+          let sortedStack1 = sortStack(testStack1);
+          expect(sortedStack1.pop()).toBe(3);
+          expect(sortedStack1.pop()).toBe(5);
+          expect(sortedStack1.pop()).toBe(7);
+          expect(sortedStack1.pop()).toBe(10);
+          expect(sortedStack1.pop()).toBe(66);
+          expect(sortedStack1.peek()).toBe(79);
+          sortedStack1.popAll();
+          testStack1.popAll();
+        });
+      });
+    });
+
   });
 })();
