@@ -1,4 +1,6 @@
 
+const SinglyList = require('./chapter-two-problems');
+
 class TripleStack {
   constructor (size) {
     this.storage = [];
@@ -293,7 +295,7 @@ class Stack {
 };
 
 class QueueViaStack {
-  constructor (size) {
+  constructor () {
     this.inputStack = new Stack();
     this.outputStack = new Stack();
   };
@@ -378,4 +380,89 @@ const sortStack = function (stack) {
 // sortedStack1.popAll();
 // console.log(sortedStack1);
 // sortedStack1.pop();
-// console.log( sortedStack1)
+// console.log( sortedStack1);
+class Animal {
+  constructor(id, type, name) {
+    this.id = id;
+    this.type = type;
+    this.name = name;
+  }
+};
+
+class Queue {
+  constructor () {
+    this.storage = {};
+    this.headTracker = 0;
+    this.tailTracker = 0;
+    this.length = 0;
+  }
+
+  enqueue (value) {
+    this.storage[this.tailTracker] = value;
+    this.tailTracker++;
+    this.length++;
+  };
+
+  dequeue () {
+    let popped = this.storage[this.headTracker];
+    delete this.storage[this.headTracker];
+    this.headTracker++;
+    if (this.length > 0) {
+      this.length--;
+    }
+    return popped;
+  };
+
+  peek () {
+    console.log(this.storage[this.headTracker])
+    return this.storage[this.headTracker];
+  };
+
+  dequeueAll () {
+    this.storage = {};
+    this.headTracker = 0;
+    this.tailTracker = 0;
+    this.length = 0;
+  };
+};
+
+var myQueue = new Queue();
+myQueue.enqueue(new Animal(1, 'dog', 'Wilbur'));
+myQueue.enqueue(new Animal(2, 'cat', 'Milko'));
+myQueue.enqueue(new Animal(3, 'cat', 'Creamy'));
+myQueue.dequeue();
+myQueue.peek();
+console.log(myQueue)
+
+class AnimalShelter {
+  constructor () {
+    this.catQueue = new Queue();
+    this.dogQueue = new Queue();
+    this.id = 0;
+  };
+
+  enqueue (animal) {
+
+  };
+
+  dequeueAny () {
+
+  };
+
+  dequeueCat () {
+
+  };
+
+  dequeueDog () {
+
+  };
+
+  dequeueAll () {
+    this.catQueue = new Queue();
+    this.dogQueue = new Queue();
+    this.id = 0;
+  };
+};
+
+var linkedList1 = new SinglyList.SinglyList();
+// console.log(linkedList1)

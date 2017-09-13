@@ -286,3 +286,5 @@ const circularList = function (list) {
 
 // console.log('testListOne ==>', testListOne);
 // console.log(testListOne.findKthToLast(4));
+
+exports.SinglyList = SinglyList;
