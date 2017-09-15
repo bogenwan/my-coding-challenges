@@ -1,5 +1,5 @@
 
-const SinglyList = require('./chapter-two-problems');
+// const SinglyList = require('./chapter-two-problems');
 
 class TripleStack {
   constructor (size) {
@@ -382,8 +382,8 @@ const sortStack = function (stack) {
 // sortedStack1.pop();
 // console.log( sortedStack1);
 class Animal {
-  constructor(id, type, name) {
-    this.id = id;
+  constructor(type, name) {
+    // this.id = id;
     this.type = type;
     this.name = name;
   }
@@ -426,13 +426,13 @@ class Queue {
   };
 };
 
-var myQueue = new Queue();
-myQueue.enqueue(new Animal(1, 'dog', 'Wilbur'));
-myQueue.enqueue(new Animal(2, 'cat', 'Milko'));
-myQueue.enqueue(new Animal(3, 'cat', 'Creamy'));
-myQueue.dequeue();
-myQueue.peek();
-console.log(myQueue)
+// var myQueue = new Queue();
+// myQueue.enqueue(new Animal('dog', 'Wilbur'));
+// myQueue.enqueue(new Animal('cat', 'Milko'));
+// myQueue.enqueue(new Animal('cat', 'Creamy'));
+// myQueue.dequeue();
+// myQueue.peek();
+// console.log(myQueue)
 
 class AnimalShelter {
   constructor () {
@@ -442,7 +442,13 @@ class AnimalShelter {
   };
 
   enqueue (animal) {
-
+    animal.id = this.id;
+    if (animal.type === 'cat') {
+      this.catQueue.enqueue(animal);
+    } else if (animal.type === 'dog') {
+      this.dogQueue.enqueue(animal);
+    }
+    this.id++;
   };
 
   dequeueAny () {
@@ -450,11 +456,11 @@ class AnimalShelter {
   };
 
   dequeueCat () {
-
+    return this.catQueue.dequeue();
   };
 
   dequeueDog () {
-
+    return this.dogQueue.dequeue();
   };
 
   dequeueAll () {
@@ -464,5 +470,14 @@ class AnimalShelter {
   };
 };
 
-var linkedList1 = new SinglyList.SinglyList();
+var testShelter = new AnimalShelter();
+testShelter.enqueue(new Animal('cat', 'Milko'));
+testShelter.enqueue(new Animal('cat', 'Creamy'));
+testShelter.enqueue(new Animal('dog', 'Barky'));
+// testShelter.dequeueAll();
+console.log(testShelter.dequeueCat());
+console.log(testShelter.dequeueDog());
+console.log(testShelter);
+
+// var linkedList1 = new SinglyList.SinglyList();
 // console.log(linkedList1)
