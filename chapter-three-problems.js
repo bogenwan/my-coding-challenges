@@ -189,7 +189,6 @@ class SetOfStack {
   pop () {
     if (!this.storage[this.subStackCounter]) {
       let message = 'setOfStack is empty!';
-      console.log(message);
       return message;
     }
     if (this.storage[this.subStackCounter] && this.subStackStorage > 0) {
@@ -215,7 +214,6 @@ class SetOfStack {
   peek () {
     if (Object.keys(this.storage).length  === 0) {
       let message = 'setOfStack is empty!';
-      console.log(message);
       return message;
     } else {
       let subStack = this.storage[this.subStackCounter];
@@ -305,12 +303,8 @@ class QueueViaStack {
   };
 
   dequeue () {
-    // console.log('input size ==>', this.inputStack.getSize());
-    // console.log('outputStack size ==>', this.outputStack.getSize());
     if (!this.outputStack.getSize() && !this.inputStack.getSize()) {
-      console.log('Queue is empty!');
       return 'Queue is empty!';
-      // return 'Queue is empty!';
     }
     if (!this.outputStack.getSize() && this.inputStack.getSize()) {
       while (this.inputStack.getSize()) {
@@ -318,7 +312,6 @@ class QueueViaStack {
       }
     }
     return this.outputStack.pop();
-    // console.log('after pop', this.outputStack.length);
   };
 
   dequeueAll () {
@@ -414,8 +407,11 @@ class Queue {
   };
 
   peek () {
-    console.log(this.storage[this.headTracker])
-    return this.storage[this.headTracker];
+    if (Object.keys(this.storage).length === 0) {
+      return 'This storage is empty!'
+    } else {
+      return this.storage[this.headTracker];
+    }
   };
 
   dequeueAll () {
@@ -423,6 +419,14 @@ class Queue {
     this.headTracker = 0;
     this.tailTracker = 0;
     this.length = 0;
+  };
+
+  isEmpty () {
+    if (Object.keys(this.storage).length === 0) {
+      return true;
+    } else {
+      return false;
+    }
   };
 };
 
@@ -432,6 +436,7 @@ class Queue {
 // myQueue.enqueue(new Animal('cat', 'Creamy'));
 // myQueue.dequeue();
 // myQueue.peek();
+// console.log(myQueue.isEmpty());
 // console.log(myQueue)
 
 class AnimalShelter {
@@ -452,15 +457,38 @@ class AnimalShelter {
   };
 
   dequeueAny () {
-
+    if (this.catQueue.isEmpty() && this.dogQueue.isEmpty()) {
+      return 'Shelter is empty!';
+    }
+    if (this.catQueue.isEmpty() && !this.dogQueue.isEmpty()) {
+      return this.dogQueue.dequeue();
+    } else if (!this.catQueue.isEmpty() && this.dogQueue.isEmpty()) {
+      return this.catQueue.dequeue();
+    } else {
+      let catID = this.catQueue.peek().id;
+      let dogID = this.dogQueue.peek().id;
+      if (catID < dogID) {
+        this.catQueue.dequeue();
+      } else {
+        this.dogQueue.dequeue();
+      }
+    }
   };
 
   dequeueCat () {
-    return this.catQueue.dequeue();
+    if (this.catQueue.isEmpty()) {
+      return 'No more cats available!'
+    } else {
+      return this.catQueue.dequeue();
+    }
   };
 
   dequeueDog () {
-    return this.dogQueue.dequeue();
+    if (this.dogQueue.isEmpty()) {
+      return 'No more dogs available!'
+    } else {
+      return this.dogQueue.dequeue();
+    }
   };
 
   dequeueAll () {
@@ -470,14 +498,23 @@ class AnimalShelter {
   };
 };
 
-var testShelter = new AnimalShelter();
-testShelter.enqueue(new Animal('cat', 'Milko'));
-testShelter.enqueue(new Animal('cat', 'Creamy'));
-testShelter.enqueue(new Animal('dog', 'Barky'));
+// var testShelter = new AnimalShelter();
+// testShelter.enqueue(new Animal('cat', 'Milko'));
+// testShelter.dequeueCat();
+// testShelter.dequeueCat();
+// console.log(testShelter.catQueue.peek());
+// testShelter.enqueue(new Animal('dog', 'Barky'));
+// testShelter.enqueue(new Animal('cat', 'Creamy'));
 // testShelter.dequeueAll();
-console.log(testShelter.dequeueCat());
-console.log(testShelter.dequeueDog());
-console.log(testShelter);
+// testShelter.dequeueAny();
+// testShelter.dequeueAny();
+// testShelter.dequeueAny();
+// testShelter.enqueue(new Animal('dog', 'Chad'));
+// testShelter.enqueue(new Animal('cat', 'Creamy'));
+// testShelter.dequeueAny();
+// console.log(testShelter.dequeueDog());
+// console.log(testShelter.dequeueDog());
+// console.log(testShelter);
 
 // var linkedList1 = new SinglyList.SinglyList();
 // console.log(linkedList1)

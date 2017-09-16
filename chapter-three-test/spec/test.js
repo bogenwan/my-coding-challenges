@@ -6,6 +6,7 @@
     let tripleStack1 = new TripleStack(4);
     let setOfStack1 = new SetOfStack(3);
     let queueViaStack1 = new QueueViaStack();
+    let animalShelter1 = new AnimalShelter();
 
     describe('Question 3.1', function () {
       describe('Triple stack functionality test', function () {
@@ -241,6 +242,49 @@
           expect(sortedStack1.peek()).toBe(79);
           sortedStack1.popAll();
           testStack1.popAll();
+        });
+      });
+    });
+
+    describe('Question 3.6', function () {
+      describe('Test enqueue functionality', function () {
+
+        beforeEach(function () {
+          animalShelter1.enqueue(new Animal('cat', 'Milko'));
+          animalShelter1.enqueue(new Animal('dog', 'Figo'));
+        });
+
+        afterEach(function () {
+          animalShelter1.dequeueAll();
+        });
+
+        it('Should enqueue an animal', function () {
+          let animalNode = new Animal('cat', 'Milko');
+          animalNode.id = 0;
+          expect(animalShelter1.catQueue.peek()).toEqual(animalNode);
+          let animalNode2 = new Animal('dog', 'Figo');
+          animalNode2.id = 1;
+          expect(animalShelter1.dogQueue.peek()).toEqual(animalNode2);
+        });
+
+        it('Should dequeue a cat', function () {
+          animalShelter1.dequeueCat();
+          expect(animalShelter1.catQueue.isEmpty()).toBe(true);
+        });
+
+        it('Should dequeue a dog', function () {
+          animalShelter1.dequeueDog();
+          expect(animalShelter1.dogQueue.isEmpty()).toBe(true);
+        });
+
+        it('Should dequeue any animal but in the order of which animal came in first', function () {
+          animalShelter1.enqueue(new Animal('cat', 'Creamy'));
+          animalShelter1.dequeueAny();
+          expect(animalShelter1.catQueue.storage[0]).toEqual(undefined);
+          animalShelter1.dequeueAny();
+          expect(animalShelter1.dogQueue.storage[0]).toEqual(undefined);
+          animalShelter1.dequeueAny();
+          expect(animalShelter1.catQueue.storage[1]).toEqual(undefined);
         });
       });
     });
