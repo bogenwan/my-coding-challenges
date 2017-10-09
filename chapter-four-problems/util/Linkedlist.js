@@ -60,17 +60,17 @@ class Linkedlist {
 };
 
 
-var testList = new Linkedlist();
+// var testList = new Linkedlist();
 
-testList.add(1);
-testList.add(2);
-testList.add(3);
-testList.add(4);
-testList.removeOne(4);
-testList.removeAll()
-testList.size()
-testList.add(5);
-console.log(testList)
+// testList.add(1);
+// testList.add(2);
+// testList.add(3);
+// testList.add(4);
+// testList.removeOne(4);
+// testList.removeAll()
+// testList.size()
+// testList.add(5);
+// console.log(testList)
 
 module.exports = Linkedlist;
 
