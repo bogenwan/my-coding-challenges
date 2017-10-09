@@ -246,14 +246,16 @@ const circularList = function (list) {
   return 'This is not a circular linked list!';
 };
 
-// const testListOne = new SinglyList();
-// testListOne.add(1);
-// testListOne.add(2);
-// testListOne.add(3);
-// testListOne.add(4);
-// testListOne.add(5);
-// testListOne.add(4);
-// testListOne.add(7);
+const testListOne = new SinglyList();
+testListOne.add(1);
+testListOne.add(2);
+testListOne.add(3);
+testListOne.add(4);
+testListOne.add(5);
+testListOne.add(4);
+testListOne.add(7);
+
+console.log(testListOne)
 
 // const testListTwo = new SinglyList();
 // testListTwo.add(1);
