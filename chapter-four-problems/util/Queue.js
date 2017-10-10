@@ -14,9 +14,14 @@ class Queue {
 
   dequeue () {
     let dequeued = this.storage[this.headTracker];
-    delete this.storage[this.headTracker];
-    this.headTracker++;
-    if (this.length > 0) {
+    if (this.length <= 1) {
+      this.storage = {};
+      this.length = 0;
+      this.headTracker = 0;
+      this.tailTracker = 0;
+    } else {
+      delete this.storage[this.headTracker];
+      this.headTracker++;
       this.length--;
     }
     return dequeued;
@@ -44,8 +49,13 @@ testQueue.enqueue(1);
 testQueue.enqueue(2);
 testQueue.enqueue(3);
 testQueue.dequeue();
-testQueue.dequeueAll();
+testQueue.dequeue();
+testQueue.dequeue();
 testQueue.enqueue(4);
+// testQueue.dequeue();
+// testQueue.dequeueAll();
+// testQueue.dequeue();
+// testQueue.dequeue();
 
 console.log(testQueue)
 console.log(testQueue.isEmpty());
