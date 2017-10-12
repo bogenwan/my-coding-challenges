@@ -1,19 +1,18 @@
 var array = [8, 9, 4, 5, 6, 2, 3, 7, 1, 8];
 
 const BubbleSort = function (arr) {
-  let copied = arr.slice();
   do {
     var beenSort = false;
-    for (let i = 0; i < copied.length; i++) {
-      if (copied[i + 1] < copied[i]) {
-        let temp = copied[i + 1];
-        copied[i + 1] = copied[i];
-        copied[i] = temp;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i + 1] < arr[i]) {
+        let temp = arr[i + 1];
+        arr[i + 1] = arr[i];
+        arr[i] = temp;
         beenSort = true;
       }
     }
   } while (beenSort);
-  return copied;
+  return arr;
 };
 
 // console.log(BubbleSort(array));

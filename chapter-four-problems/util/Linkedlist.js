@@ -59,18 +59,38 @@ class Linkedlist {
   };
 };
 
+const removeDuplicate = function(list) {
+  //We need two pointers to compare current value and the rest of the values
+  var startPointer = list.head;
+  while(startPointer) {
+    var currPointer = startPointer.next;
+    var prevPointer = startPointer;
+    while(currPointer) {
+      if(currPointer.value === startPointer.value) {
+      prevPointer.next = currPointer.next ;
+      currPointer !== null ? currPointer = currPointer.next : null;
+      list.length--;
+      }
+      prevPointer = prevPointer.next
+      currPointer !== null ? currPointer = currPointer.next : null;
+    }
+    startPointer = startPointer.next;
+  }
+  return list;
+};
 
-// var testList = new Linkedlist();
+var testList = new Linkedlist();
 
-// testList.add(1);
-// testList.add(2);
-// testList.add(3);
-// testList.add(4);
-// testList.removeOne(4);
+testList.add(2);
+testList.add(1);
+testList.add(2);
+testList.add(4);
+testList.add(1);// testList.removeOne(4);
 // testList.removeAll()
 // testList.size()
 // testList.add(5);
-// console.log(testList)
+removeDuplicate(testList)
+console.log(testList)
 
 module.exports = Linkedlist;
 

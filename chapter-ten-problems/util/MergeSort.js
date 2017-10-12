@@ -1,13 +1,12 @@
 var array = [8, 9, 4, 5, 6, 2, 7, 1, 8];
 
 const MergSort = function (arr) {
-  let copied = arr.slice();
-  if (copied.length < 2) {
-    return copied;
+  if (arr.length < 2) {
+    return arr;
   }
-  let mid = Math.floor(copied.length / 2);
-  let leftArr = copied.slice(0, mid);
-  let rightArr = copied.slice(mid, copied.length);
+  let mid = Math.floor(arr.length / 2);
+  let leftArr = arr.slice(0, mid);
+  let rightArr = arr.slice(mid, arr.length);
 
   function helper (left, right) {
     let resultArr = [];
