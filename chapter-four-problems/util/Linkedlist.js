@@ -83,14 +83,32 @@ var testList = new Linkedlist();
 
 testList.add(2);
 testList.add(1);
-testList.add(2);
 testList.add(4);
-testList.add(1);// testList.removeOne(4);
+testList.add(6);
+testList.add(5);// testList.removeOne(4);
 // testList.removeAll()
 // testList.size()
 // testList.add(5);
-removeDuplicate(testList)
-console.log(testList)
+// removeDuplicate(testList)
+// console.log(testList)
 
-module.exports = Linkedlist;
+const removeKth = function (list, num) {
+  let headPointer = list.head;
+  let tailPointer = list.head;
+  let prevPointer;
+  while (num > 0 && headPointer.next !== null) {
+    headPointer = headPointer.next;
+    num--
+  }
+  // console.log(headPointer)
+  while (headPointer.next) {
+    headPointer = headPointer.next;
+    prevPointer = tailPointer;
+    tailPointer = tailPointer.next;
+  }
+  prevPointer.next = tailPointer.next;
+  list.length--;
+};
 
+// console.log(removeKth(testList, 2))
+// console.log(testList)
