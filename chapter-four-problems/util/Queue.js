@@ -57,8 +57,8 @@ testQueue.enqueue(4);
 // testQueue.dequeue();
 // testQueue.dequeue();
 
-console.log(testQueue)
-console.log(testQueue.isEmpty());
+// console.log(testQueue)
+// console.log(testQueue.isEmpty());
 
 module.exports = Queue;
 

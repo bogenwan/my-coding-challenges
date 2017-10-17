@@ -152,22 +152,21 @@ SinglyList.prototype.partition = function (mainList, num) {
 
 const sumLists = function (list1, list2) {
   let sumList = new SinglyList();
-  let list1Pointer = list1.head;
-  let list2Pointer = list2.head;
-  let memo = 0;
-  let sum = 0;
 
-  while (list1Pointer !== null || list2Pointer !== null) {
-    sum = (list1Pointer === null ? 0 : list1Pointer.value) + (list2Pointer === null ? 0 : list2Pointer.value) + memo;
-    if (sum >= 10) {
-      memo = Math.floor(sum / 10);
-      sumList.add(sum % 10);
-    } else {
-      sumList.add(sum);
-      memo = 0;
+  function listToNumber (list) {
+    let array = [];
+    let pointer = list.head;
+    while(pointer) {
+      array.unshift(pointer.value);
+      pointer = pointer.next;
     }
-    list1Pointer = list1Pointer === null ? null : list1Pointer.next;
-    list2Pointer = list2Pointer === null ? null : list2Pointer.next;
+    return Number(array.join(''));
+  }
+
+  let total = listToNumber(list1) + listToNumber(list2) +'';
+
+  for (let i = total.length -1; i >= 0; i--) {
+    sumList.add(Number(total[i]));
   }
   return sumList;
 };
@@ -246,21 +245,21 @@ const circularList = function (list) {
   return 'This is not a circular linked list!';
 };
 
-const testListOne = new SinglyList();
-testListOne.add(1);
-testListOne.add(2);
-testListOne.add(3);
-testListOne.add(4);
-testListOne.add(5);
-testListOne.add(4);
-testListOne.add(7);
+// const testListOne = new SinglyList();
+// testListOne.add(7);
+// testListOne.add(1);
+// testListOne.add(6);
+// testListOne.add(4);
+// testListOne.add(5);
+// testListOne.add(4);
+// testListOne.add(7);
 
-console.log(testListOne)
+// console.log(testListOne)
 
 // const testListTwo = new SinglyList();
-// testListTwo.add(1);
-// testListTwo.add(8);
 // testListTwo.add(5);
+// testListTwo.add(9);
+// testListTwo.add(2);
 // testListTwo.add(6);
 // testListTwo.add(2);
 // testListTwo.add(4);
