@@ -498,6 +498,26 @@ class AnimalShelter {
   };
 };
 
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const threeArrayStack = function (arr, numOfStack, valPerStack) {
+  let arrayStack = new Array(numOfStack).fill(null);
+
+  arrayStack = arrayStack.map((elem) => {
+    return elem = new Stack();
+  });
+  let currStackCounter = 0;
+  for (let i = 0; i < arr.length; i+= valPerStack) {
+    for (let j = i; j < i + valPerStack; j++) {
+      arrayStack[currStackCounter].push(arr[j]);
+    }
+    currStackCounter = currStackCounter + 1;
+  }
+  return arrayStack;
+};
+
+// console.log(threeArrayStack(array, 3, 3));
+
 // var testShelter = new AnimalShelter();
 // testShelter.enqueue(new Animal('cat', 'Milko'));
 // testShelter.dequeueCat();

@@ -14,24 +14,29 @@ class Graph {
   };
 
   removeNode (node) {
-
+    for (let i = 0; i < this.nodes[node].length; i++) {
+      this.removeEdge(this.nodes[node][i], node);
+    }
+    delete this.nodes[node];
   };
 
-  // removeVertex (vertex) {
-  //   let index = this.vertexList.indexOf(vertex);
-  //   if (index >= 0) {
-  //     this.vertexList.splice(index, 1);
-  //   }
-  //   for (let i = 0; i < this.edgeList[vertex].length; i++) {
+  hasEdge (fromNode, toNode) {
+    this.nodes[fromNode].indexOf(toNode) === -1 && this.nodes[toNode].indexOf(fromNode) === -1 ? false : true;
+  };
 
-  //   }
-  // };
+  addEdge (fromNode, toNode) {
+
+    this.nodes[fromNode].push(toNode);
+    this.nodes[toNode].push(fromNode);
+  };
+
 };
 
 var testGraph = new Graph();
 testGraph.addNode('a');
 testGraph.addNode('b');
-console.log(testGraph.contains('a'));
+// console.log(testGraph.contains('a'));
+console.log(testGraph)
 
 
 // class Graph {
