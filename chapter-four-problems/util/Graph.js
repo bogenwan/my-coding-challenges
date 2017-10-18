@@ -1,6 +1,6 @@
 // var Queue = require('./Queue.js');
 
-class Graph {
+class UndirectedGraph {
   constructor () {
     this.nodes = {};
   };
@@ -40,26 +40,76 @@ class Graph {
   };
 };
 
-var testGraph = new Graph();
+var testUndirectedGraph = new UndirectedGraph();
 
-testGraph.addNode('Johnny');
-testGraph.addNode('Emily');
-testGraph.addNode('Michelle');
-testGraph.addNode('Charlene');
-testGraph.addNode('Maurice');
-testGraph.addEdge('Johnny', 'Emily');
-testGraph.addEdge('Michelle', 'Johnny');
-testGraph.addEdge('Michelle', 'Emily');
-testGraph.addEdge('Charlene', 'Johnny');
-testGraph.addEdge('Charlene', 'Emily');
-testGraph.addEdge('Johnny', 'Maurice');
-testGraph.addEdge('Emily', 'Maurice');
-// testGraph.removeEdge('Emily', 'Maurice');
-testGraph.removeNode('Maurice');
-// testGraph.removeNode('Emily')
-// console.log(testGraph.contains('Michelle'));
+// testUndirectedGraph.addNode('Johnny');
+// testUndirectedGraph.addNode('Emily');
+// testUndirectedGraph.addNode('Michelle');
+// testUndirectedGraph.addNode('Charlene');
+// testUndirectedGraph.addNode('Maurice');
+// testUndirectedGraph.addEdge('Johnny', 'Emily');
+// testUndirectedGraph.addEdge('Michelle', 'Johnny');
+// testUndirectedGraph.addEdge('Michelle', 'Emily');
+// testUndirectedGraph.addEdge('Charlene', 'Johnny');
+// testUndirectedGraph.addEdge('Charlene', 'Emily');
+// testUndirectedGraph.addEdge('Johnny', 'Maurice');
+// testUndirectedGraph.addEdge('Emily', 'Maurice');
+// testUndirectedGraph.removeEdge('Emily', 'Maurice');
+// testUndirectedGraph.removeNode('Maurice');
+// testUndirectedGraph.removeNode('Emily')
+// console.log(testUndirectedGraph.contains('Michelle'));
 
-// console.log(testGraph.hasEdge('Maurice', 'Emily'));
-console.log(testGraph)
+// console.log(testUndirectedGraph.hasEdge('Maurice', 'Emily'));
+// console.log(testUndirectedGraph)
 
-module.exports = Graph;
+class DirectedGraph {
+  constructor () {
+    this.nodes = {};
+  };
+
+  addNode (node) {
+    this.nodes[node] = [];
+  };
+
+  contains (node) {
+    return this.nodes.hasOwnProperty(node) ? true : false;
+  };
+
+  removeNode (node) {
+    while(this.nodes[node].length) {
+      this.nodes[node] = [];
+    }
+    delete this.nodes[node];
+  };
+
+  hasEdge (fromNode, toNode) {
+    return this.nodes[fromNode].indexOf(toNode) === -1 ? false : true;
+  };
+
+  addEdge (fromNode, toNode) {
+    this.hasEdge(fromNode, toNode) ? null :
+    this.nodes[fromNode].push(toNode);
+  };
+
+  removeEdge (fromNode, toNode) {
+    this.nodes[fromNode].splice(this.nodes[fromNode].indexOf(toNode), 1);
+  };
+};
+
+const testDirectedGraph = new DirectedGraph();
+
+testDirectedGraph.addNode('Johnny');
+testDirectedGraph.addNode('Emily');
+testDirectedGraph.addNode('Maurice');
+testDirectedGraph.addEdge('Johnny', 'Maurice');
+testDirectedGraph.addEdge('Emily', 'Johnny');
+// testDirectedGraph.removeEdge('Johnny', 'Maurice');
+testDirectedGraph.removeNode('Emily');
+// console.log(testDirectedGraph.contains('Maurice'));
+
+console.log(testDirectedGraph);
+
+
+
+module.exports = UndirectedGraph;
+module.exports = DirectedGraph;
