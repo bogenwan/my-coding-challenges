@@ -1,31 +1,44 @@
 const DirectedGraph = require('./util/DirectedGraph.js');
 const Queue = require('./util/Queue.js');
 
+DirectedGraph.prototype.breadthFirstTravers = function (node) {
+  let needToVisitQueue = new Queue();
+  let visited = {};
+  visited[node] = true;
+  needToVisitQueue.enqueue(node);
+   while (!needToVisitQueue.isEmpty()) {
+    let currNode = needToVisitQueue.dequeue();
+    let currNodeAdjList = this.nodes[currNode];
+    for (let i = 0; i < currNodeAdjList.length; i++) {
+      if (visited[currNodeAdjList[i]] === undefined) {
+        visited[currNodeAdjList[i]] = true;
+        needToVisitQueue.enqueue(currNodeAdjList[i]);
+        console.log(needToVisitQueue)
+      }
+    }
+  }
+};
+
 DirectedGraph.prototype.routeBetweenNode = function (fromNode, toNode) {
+  if (fromNode === toNode) {
+    return true;
+  }
   let queue = new Queue();
   let visited = {};
-  let fromNodeArray = this.nodes[fromNode];
-  // for (let i = 0; i < nodeArray.length; i++) {
-  //   if (nodeArray[i] === toNode) {
-  //     return 'Have Edge';
-  //   } else if (nodeArray[i] !== toNode && this.nodes[nodeArray[i]].length) {
-  //     let innerList = this.nodes[nodeArray[i]];
-  //     for (let j = 0; j < innerList.length; j++) {
-  //       queue.enqueue(innerList[j]);
-  //     }
-  //   }
-  // }
-  // while (queue.length) {
-  //   console.log(queue.dequeue());
-  // };
+  visited[fromNode] = true;
   queue.enqueue(fromNode);
+
   while (!queue.isEmpty()) {
     let currNode = queue.dequeue();
-    visited[currNode] = true;
-    console.log(visited);
+    let currNodeArray = this.nodes[currNode];
+    for (let i = 0; i < currNodeArray.length; i++) {
+      if (visited[currNodeArray[i]] === undefined) {
+        visited[currNodeArray[i]] = true;
+        queue.enqueue(currNodeArray[i]);
+      }
+    }
   }
-  // console.log(this.nodes[fromNode])
-  // console.log(toNode)
+  return false;
 };
 
 const testGraph = new DirectedGraph();
@@ -40,4 +53,5 @@ testGraph.addEdge('B', 'C');
 testGraph.addEdge('B', 'D');
 testGraph.addEdge('D', 'E');
 
+// console.log(testGraph.breadthFirstTravers('A'));
 console.log(testGraph.routeBetweenNode('A', 'E'));

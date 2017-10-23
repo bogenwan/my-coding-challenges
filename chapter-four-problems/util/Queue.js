@@ -7,7 +7,7 @@ class Queue {
   };
 
   enqueue (value) {
-    this.storage[this.length] = value;
+    this.storage[this.tailTracker] = value;
     this.tailTracker++;
     this.length++;
   };
@@ -22,6 +22,7 @@ class Queue {
     } else {
       delete this.storage[this.headTracker];
       this.headTracker++;
+      // this.tailTracker--;
       this.length--;
     }
     return dequeued;
