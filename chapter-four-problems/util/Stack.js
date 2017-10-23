@@ -30,6 +30,10 @@ class Stack {
   peek () {
     return this.storage[this.length - 1];
   };
+
+  isEmpty () {
+    return this.length === 0 ? true : false;
+  };
 };
 
 // let testStack = new Stack();

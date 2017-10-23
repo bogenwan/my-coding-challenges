@@ -1,5 +1,6 @@
 const DirectedGraph = require('./util/DirectedGraph.js');
 const Queue = require('./util/Queue.js');
+const Stack = require('./util/Stack.js');
 
 DirectedGraph.prototype.breadthFirstTravers = function (node) {
   let needToVisitQueue = new Queue();
@@ -13,7 +14,23 @@ DirectedGraph.prototype.breadthFirstTravers = function (node) {
       if (visited[currNodeAdjList[i]] === undefined) {
         visited[currNodeAdjList[i]] = true;
         needToVisitQueue.enqueue(currNodeAdjList[i]);
-        console.log(needToVisitQueue)
+      }
+    }
+  }
+};
+
+DirectedGraph.prototype.depthFirstSearch = function (node) {
+  let needToVisitStack = new Stack();
+  let visited = {};
+  visited[node] = true;
+  needToVisitStack.push(node);
+  while (!needToVisitStack.isEmpty()) {
+    let currNode = needToVisitStack.pop();
+    let currNodeArray = this.nodes[currNode];
+    for (let i = 0; i < currNodeArray.length; i++) {
+      if (visited[currNodeArray[i]] === undefined) {
+        visited[currNodeArray[i]] = true;
+        needToVisitStack.push(currNodeArray[i]);
       }
     }
   }
@@ -54,4 +71,5 @@ testGraph.addEdge('B', 'D');
 testGraph.addEdge('D', 'E');
 
 // console.log(testGraph.breadthFirstTravers('A'));
-console.log(testGraph.routeBetweenNode('A', 'E'));
+// console.log(testGraph.depthFirstSearch('A'));
+// console.log(testGraph.routeBetweenNode('A', 'E'));
