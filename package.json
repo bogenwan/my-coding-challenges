@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "chapter4test": "browserify chapter-four-test/spec/test.js -o chapter-four-test/spec/bundle.js"
   },
   "repository": {
     "type": "git",
