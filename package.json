@@ -21,5 +21,8 @@
   "homepage": "https://github.com/bogenwan/my-coding-challenges#readme",
   "devDependencies": {
     "jasmine": "^2.6.0"
+  },
+  "dependencies": {
+    "browserify": "^14.5.0"
   }
 }

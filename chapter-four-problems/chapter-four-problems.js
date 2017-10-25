@@ -49,7 +49,9 @@ DirectedGraph.prototype.routeBetweenNode = function (fromNode, toNode) {
     let currNode = queue.dequeue();
     let currNodeArray = this.nodes[currNode];
     for (let i = 0; i < currNodeArray.length; i++) {
-      if (visited[currNodeArray[i]] === undefined) {
+      if (currNodeArray[i] === toNode) {
+        return true;
+      } else if (visited[currNodeArray[i]] === undefined) {
         visited[currNodeArray[i]] = true;
         queue.enqueue(currNodeArray[i]);
       }
@@ -69,7 +71,8 @@ testGraph.addEdge('A', 'D');
 testGraph.addEdge('B', 'C');
 testGraph.addEdge('B', 'D');
 testGraph.addEdge('D', 'E');
+testGraph.addEdge('E', 'A');
 
 // console.log(testGraph.breadthFirstTravers('A'));
 // console.log(testGraph.depthFirstSearch('A'));
-// console.log(testGraph.routeBetweenNode('A', 'E'));
+// console.log(testGraph.routeBetweenNode('D', 'A'));
