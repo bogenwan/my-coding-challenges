@@ -1,3 +1,5 @@
+const Queue = require('./Queue.js');
+
 class DirectedGraph {
   constructor () {
     this.nodes = {};
@@ -30,15 +32,44 @@ class DirectedGraph {
   removeEdge (fromNode, toNode) {
     this.nodes[fromNode].splice(this.nodes[fromNode].indexOf(toNode), 1);
   };
+
+  removeAll () {
+    this.nodes = {};
+  };
+
+  routeBetweenNode (fromNode, toNode) {
+  if (fromNode === toNode) {
+    return true;
+  }
+  let queue = new Queue();
+  let visited = {};
+  visited[fromNode] = true;
+  queue.enqueue(fromNode);
+
+  while (!queue.isEmpty()) {
+    let currNode = queue.dequeue();
+    let currNodeArray = this.nodes[currNode];
+    for (let i = 0; i < currNodeArray.length; i++) {
+      if (currNodeArray[i] === toNode) {
+        return true;
+      } else if (visited[currNodeArray[i]] === undefined) {
+        visited[currNodeArray[i]] = true;
+        queue.enqueue(currNodeArray[i]);
+      }
+    }
+  }
+  return false;
+  };
 };
 
-const testDirectedGraph = new DirectedGraph();
+// const testDirectedGraph = new DirectedGraph();
 
 // testDirectedGraph.addNode('Johnny');
 // testDirectedGraph.addNode('Emily');
 // testDirectedGraph.addNode('Maurice');
 // testDirectedGraph.addEdge('Johnny', 'Maurice');
-// testDirectedGraph.addEdge('Emily', 'Johnny');
+// testDirectedGraph.removeAll();
+// testDirectedGraph.addEdge;('Emily', 'Johnny');
 // testDirectedGraph.removeEdge('Johnny', 'Maurice');
 // testDirectedGraph.removeNode('Emily');
 // console.log(testDirectedGraph.contains('Maurice'));
