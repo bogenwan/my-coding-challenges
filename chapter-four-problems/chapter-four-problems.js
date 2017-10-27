@@ -60,19 +60,21 @@ DirectedGraph.prototype.routeBetweenNode = function (fromNode, toNode) {
   return false;
 };
 
-const testGraph = new DirectedGraph();
-testGraph.addNode('A');
-testGraph.addNode('B');
-testGraph.addNode('C');
-testGraph.addNode('D');
-testGraph.addNode('E');
-testGraph.addEdge('A', 'B');
-testGraph.addEdge('A', 'D');
-testGraph.addEdge('B', 'C');
-testGraph.addEdge('B', 'D');
-testGraph.addEdge('D', 'E');
-testGraph.addEdge('E', 'A');
+// const testGraph = new DirectedGraph();
+// testGraph.addNode('A');
+// testGraph.addNode('B');
+// testGraph.addNode('C');
+// testGraph.addNode('D');
+// testGraph.addNode('E');
+// testGraph.addEdge('A', 'B');
+// testGraph.addEdge('A', 'D');
+// testGraph.addEdge('B', 'C');
+// testGraph.addEdge('B', 'D');
+// testGraph.addEdge('D', 'E');
+// testGraph.addEdge('E', 'A');
 
 // console.log(testGraph.breadthFirstTravers('A'));
 // console.log(testGraph.depthFirstSearch('A'));
 // console.log(testGraph.routeBetweenNode('D', 'A'));
+
+

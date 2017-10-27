@@ -10,5 +10,11 @@ npm install
 2. For chapter 4 you need to create browserify bundle by running:
 
 ```
-npm run chapter4test
+npm run browserifychapter4test
+```
+
+or for live re-bundle chapter 4 test you can run watchify by running:
+
+```
+npm run watchifychapter4test
 ```
