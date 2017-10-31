@@ -1,12 +1,17 @@
 const testDirectedGraph = require('../../chapter-four-problems/util/DirectedGraph.js');
+const testBinarySearchTree = require('../../chapter-four-problems/util/BinarySearchTree.js');
+const chapterFourFunctions = require('../../chapter-four-problems/chapter-four-problems.js');
+const testMinimalTree = chapterFourFunctions.minimalTree;
 
 (function () {
   'use strict'
 
   describe('Chapter 4 coding challenge test', function () {
     let testGraph = new testDirectedGraph();
+    let testBinaryTree = new testBinarySearchTree();
+    let sortedArray = [1, 2, 3, 4, 5, 6, 7];
 
-    describe('Chapter 4.1 Test directed graph and route between node function', function () {
+    describe('Question 4.1 Test directed graph and route between node function', function () {
 
       beforeEach(function () {
         testGraph.addNode('A');
@@ -66,6 +71,37 @@ const testDirectedGraph = require('../../chapter-four-problems/util/DirectedGrap
 
       it('Should not have route from node C to D in graph', function () {
         expect(testGraph.routeBetweenNode('C', 'D')).toBe(false);
+      });
+    });
+
+    describe('Question 4.2 test minimal tree functionality', function () {
+
+      beforeEach(function () {
+        testMinimalTree(sortedArray, testBinaryTree);
+      });
+
+      afterEach(function () {
+        testBinaryTree.removeAll();
+      });
+
+      it('Should contain root node with value 4', function () {
+        expect(testBinaryTree.root.value).toBe(4);
+      });
+
+      it('Should have value 2 at root note.left.value', function () {
+        expect(testBinaryTree.root.left.value).toBe(2);
+      });
+
+      it('Should have value 6 at root note.right.value', function () {
+        expect(testBinaryTree.root.right.value).toBe(6);
+      });
+
+      it('Should have value 7 at root note.right.right.value', function () {
+        expect(testBinaryTree.root.right.right.value).toBe(7);
+      });
+
+      it('Should have value 1 at root note.left.left.value', function () {
+        expect(testBinaryTree.root.left.left.value).toBe(1);
       });
     });
 

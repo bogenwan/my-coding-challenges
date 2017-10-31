@@ -64,6 +64,10 @@ class BinarySearchTree {
     helper(this.root)
     return state;
   };
+
+  removeAll() {
+    this.root = null;
+  };
 };
 
 // let tree = new BinarySearchTree();
@@ -76,4 +80,6 @@ class BinarySearchTree {
 // tree.insert(6);
 // tree.insert(7);
 
-// console.log(tree.contain(1));
+// console.log(tree);
+
+module.exports = BinarySearchTree;

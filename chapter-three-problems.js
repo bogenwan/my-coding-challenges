@@ -140,19 +140,19 @@ class MinStack {
     this.length = 0;
   };
 };
-var testStack = new MinStack();
-testStack.push(5);
-testStack.push(-1);
-testStack.push(3);
-testStack.push(4);
-testStack.push(2);
-testStack.push(-2);
+// var testStack = new MinStack();
+// testStack.push(5);
+// testStack.push(-1);
+// testStack.push(3);
+// testStack.push(4);
+// testStack.push(2);
+// testStack.push(-2);
 // testStack.push(5);
 // testStack.push(8);
 // testStack.push(9);
 // testStack.push(5);
 // testStack.push(2);
-testStack.pop();
+// testStack.pop();
 // testStack.pop();
 // testStack.pop();
 // testStack.pop();
@@ -160,7 +160,7 @@ testStack.pop();
 // testStack.pop();
 // testStack.popAll();
 // console.log(testStack.peekMin());
-console.log(testStack.peekMin());
+// console.log(testStack.peekMin());
 
 class SetOfStack {
   constructor (num) {

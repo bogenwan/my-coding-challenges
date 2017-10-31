@@ -1,6 +1,7 @@
 const DirectedGraph = require('./util/DirectedGraph.js');
 const Queue = require('./util/Queue.js');
 const Stack = require('./util/Stack.js');
+const BinarySearchTree = require('./util/BinarySearchTree.js');
 
 DirectedGraph.prototype.breadthFirstTravers = function (node) {
   let needToVisitQueue = new Queue();
@@ -76,5 +77,27 @@ DirectedGraph.prototype.routeBetweenNode = function (fromNode, toNode) {
 // console.log(testGraph.breadthFirstTravers('A'));
 // console.log(testGraph.depthFirstSearch('A'));
 // console.log(testGraph.routeBetweenNode('D', 'A'));
+let testarray = [1, 2, 3, 4, 5, 6, 7];
+var BST = new BinarySearchTree();
 
+const minimalTree = function(arr, tree) {
+  let copied = arr.slice();
+  let middleNum = copied.splice(Math.floor(copied.length / 2), 1)[0];
+  let left = copied.splice(0, Math.floor(copied.length / 2));
+  let right = copied;
+  tree.insert(middleNum);
+  if (left.length < 2 && right.length < 2) {
+    tree.insert(left[0]);
+    tree.insert(right[0]);
+  } else {
+    minimalTree(left, tree);
+    minimalTree(right, tree);
+  }
+  return tree;
+};
 
+console.log(minimalTree(testarray, BST));
+
+module.exports = {
+  minimalTree,
+};
