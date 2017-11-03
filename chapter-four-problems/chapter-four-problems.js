@@ -77,6 +77,7 @@ DirectedGraph.prototype.routeBetweenNode = function (fromNode, toNode) {
 // console.log(testGraph.breadthFirstTravers('A'));
 // console.log(testGraph.depthFirstSearch('A'));
 // console.log(testGraph.routeBetweenNode('D', 'A'));
+
 let testarray = [1, 2, 3, 4, 5, 6, 7];
 var BST = new BinarySearchTree();
 
@@ -96,7 +97,66 @@ const minimalTree = function(arr, tree) {
   return tree;
 };
 
-console.log(minimalTree(testarray, BST));
+let testTree = minimalTree(testarray, BST);
+// console.log(testTree);
+
+const DFSinOrder = function (node) {
+  if (!node) {
+    return;
+  } else {
+    DFSinOrder(node.left);
+    console.log(node.value);
+    DFSinOrder(node.right);
+  }
+};
+// console.log(DFSinOrder(testTree.root));
+
+const DFSpreOrder = function (node) {
+  if (!node) {
+    return;
+  } else {
+    console.log(node.value);
+    DFSpreOrder(node.left);
+    DFSpreOrder(node.right);
+  }
+};
+// console.log(DFSpreOrder(testTree.root));
+
+const DFSpostOrder = function (node) {
+  if (!node) {
+    return;
+  } else {
+    DFSpostOrder(node.left);
+    DFSpostOrder(node.right);
+    console.log(node.value);
+  }
+};
+// console.log(DFSpostOrder(testTree.root));
+
+const BFStree = function (node) {
+  if (!node) {
+    return;
+  }
+  let queue = new Queue();
+  queue.enqueue(node);
+  while (!queue.isEmpty()) {
+    let currNode = queue.dequeue();
+    console.log(currNode.value);
+    if (currNode.left) {
+      queue.enqueue(currNode.left);
+    }
+    if (currNode.right) {
+      queue.enqueue(currNode.right);
+    }
+  }
+};
+// console.log(BFStree(testTree.root));
+
+// const listOfDepths = function (tree) {
+
+// };
+
+// console.log(listOfDepths(BST));
 
 module.exports = {
   minimalTree,
