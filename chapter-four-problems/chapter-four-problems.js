@@ -2,6 +2,8 @@ const DirectedGraph = require('./util/DirectedGraph.js');
 const Queue = require('./util/Queue.js');
 const Stack = require('./util/Stack.js');
 const BinarySearchTree = require('./util/BinarySearchTree.js');
+const linkedListUtil = require('./util/LinkedList.js');
+var LinkedList = linkedListUtil.Linkedlist;
 
 DirectedGraph.prototype.breadthFirstTravers = function (node) {
   let needToVisitQueue = new Queue();
@@ -152,11 +154,40 @@ const BFStree = function (node) {
 };
 // console.log(BFStree(testTree.root));
 
-// const listOfDepths = function (tree) {
+const listOfDepths = function (tree) {
+  let listArray = [];
+  let level = 0;
+  if (!tree.root) {
+    return;
+  }
+  let queue = new Queue();
+  let nextQueue = new Queue();
+  queue.enqueue(tree.root);
+  while(!queue.isEmpty()) {
+    let currNode = queue.dequeue();
+    if (!listArray[level]) {
+      listArray[level] = new LinkedList();
+      listArray[level].add(currNode.value);
+    } else {
+      listArray[level].add(currNode.value);
+    }
+    if (currNode.left) {
+      nextQueue.enqueue(currNode.left);
+    }
+    if (currNode.right) {
+      nextQueue.enqueue(currNode.right);
+    }
+    if (queue.isEmpty()) {
+      queue = nextQueue;
+      level++;
+      nextQueue = new Queue();
+    }
+  }
+  return listArray;
+};
 
-// };
+console.log(listOfDepths(BST));
 
-// console.log(listOfDepths(BST));
 
 module.exports = {
   minimalTree,

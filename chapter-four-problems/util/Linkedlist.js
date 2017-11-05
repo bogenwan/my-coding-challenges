@@ -112,3 +112,7 @@ const removeKth = function (list, num) {
 
 // console.log(removeKth(testList, 2))
 // console.log(testList)
+
+module.exports = {
+  Linkedlist,
+};
