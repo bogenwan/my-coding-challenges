@@ -191,4 +191,5 @@ console.log(listOfDepths(BST));
 
 module.exports = {
   minimalTree,
+  listOfDepths,
 };

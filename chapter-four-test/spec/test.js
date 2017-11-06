@@ -2,6 +2,7 @@ const testDirectedGraph = require('../../chapter-four-problems/util/DirectedGrap
 const testBinarySearchTree = require('../../chapter-four-problems/util/BinarySearchTree.js');
 const chapterFourFunctions = require('../../chapter-four-problems/chapter-four-problems.js');
 const testMinimalTree = chapterFourFunctions.minimalTree;
+const testListOfDepth = chapterFourFunctions.listOfDepths;
 
 (function () {
   'use strict'
@@ -102,6 +103,41 @@ const testMinimalTree = chapterFourFunctions.minimalTree;
 
       it('Should have value 1 at root note.left.left.value', function () {
         expect(testBinaryTree.root.left.left.value).toBe(1);
+      });
+    });
+
+    describe('Question 4.3 test listOfDepth functionality', function () {
+
+      beforeEach(function () {
+        testMinimalTree(sortedArray, testBinaryTree);
+      });
+
+      afterEach(function () {
+        testBinaryTree.removeAll();
+      });
+
+      it('Should have an arrayOfList length of 3', function () {
+        expect(testListOfDepth(testBinaryTree).length).toBe(3);
+      });
+
+      it('Should have value of 4 in the first list in arraylist ', function () {
+        expect(testListOfDepth(testBinaryTree)[0].head.value).toBe(4);
+      });
+
+      it('Should have value of 2 in the second list in arraylist ', function () {
+        expect(testListOfDepth(testBinaryTree)[1].head.value).toBe(2);
+      });
+
+      it('Should have value of 6 in the second node of second list in arraylist ', function () {
+        expect(testListOfDepth(testBinaryTree)[1].head.next.value).toBe(6);
+      });
+
+      it('Should have value of 1 in the first node of third list in arraylist ', function () {
+        expect(testListOfDepth(testBinaryTree)[2].head.value).toBe(1);
+      });
+
+      it('Should have value of 7 in the last node of third list in arraylist ', function () {
+        expect(testListOfDepth(testBinaryTree)[2].head.next.next.next.value).toBe(7);
       });
     });
 
