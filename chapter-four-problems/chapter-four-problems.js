@@ -81,6 +81,7 @@ DirectedGraph.prototype.routeBetweenNode = function (fromNode, toNode) {
 // console.log(testGraph.routeBetweenNode('D', 'A'));
 
 let testarray = [1, 2, 3, 4, 5, 6, 7];
+let unsortedArray = [4, 9, 1, 3, 7, 5, 8, 6, 2];
 var BST = new BinarySearchTree();
 
 const minimalTree = function(arr, tree) {
@@ -99,6 +100,15 @@ const minimalTree = function(arr, tree) {
   return tree;
 };
 
+const createTree = function (arr, tree) {
+  for (let i = 0; i < arr.length; i++) {
+    tree.insert(arr[i]);
+  }
+  return tree;
+};
+
+let unbalancedTree = createTree(unsortedArray, BST);
+// console.log(unbalancedTree);
 let testTree = minimalTree(testarray, BST);
 // console.log(testTree);
 
@@ -185,11 +195,51 @@ const listOfDepths = function (tree) {
   }
   return listArray;
 };
+// console.log(listOfDepths(BST));
 
-console.log(listOfDepths(BST));
-
+const checkBalanced = function (tree) {
+  let rootNode = tree.root;
+  let leftLevel = 0;
+  let rightLevel = 0;
+  let result = true;
+  let q = new Queue();
+  function traverser (node) {
+    if (!node) {
+      return 'Tree is empty!';
+    } else {
+      traverser(node.left);
+      leftLevel++;
+      console.log(leftLevel);
+      if (leftLevel >= 2 && leftLevel <= -2) {
+        result = false;
+      }
+      traverser(node.right);
+      leftLevel--;
+      // console.log(leftLevel)
+    }
+  };
+  q.enqueue(rootNode);
+  while (!q.isEmpty()) {
+    currNode = q.dequeue();
+    console.log(currNode)
+    if (!traverser(currNode)) {
+      return false;
+      break;
+    };
+    if (currNode.left) {
+      q.enqueue(currNode.left);
+    }
+    if (currNode.right) {
+      q.enqueue(currNode.right);
+    }
+  }
+  return result;
+};
+console.log(checkBalanced(unbalancedTree));
+// console.log(checkBalanced(testTree));
 
 module.exports = {
   minimalTree,
   listOfDepths,
+  createTree,
 };
