@@ -82,6 +82,7 @@ DirectedGraph.prototype.routeBetweenNode = function (fromNode, toNode) {
 
 let testarray = [1, 2, 3, 4, 5, 6, 7];
 let unsortedArray = [4, 9, 1, 3, 7, 5, 8, 6, 2];
+var unbalancedBST = new BinarySearchTree();
 var BST = new BinarySearchTree();
 
 const minimalTree = function(arr, tree) {
@@ -107,7 +108,7 @@ const createTree = function (arr, tree) {
   return tree;
 };
 
-let unbalancedTree = createTree(unsortedArray, BST);
+let unbalancedTree = createTree(unsortedArray, unbalancedBST);
 // console.log(unbalancedTree);
 let testTree = minimalTree(testarray, BST);
 // console.log(testTree);
@@ -197,6 +198,15 @@ const listOfDepths = function (tree) {
 };
 // console.log(listOfDepths(BST));
 
+const getMaxHeight = function (node) {
+  if (!node) {
+    return 0;
+  }
+  console.log(node)
+  return 1+ Math.max(getMaxHeight(node.left), getMaxHeight(node.right));
+};
+console.log(getMaxHeight(unbalancedTree.root));
+
 const checkBalanced = function (tree) {
   let rootNode = tree.root;
   let leftLevel = 0;
@@ -235,7 +245,7 @@ const checkBalanced = function (tree) {
   }
   return result;
 };
-console.log(checkBalanced(unbalancedTree));
+// console.log(checkBalanced(unbalancedTree));
 // console.log(checkBalanced(testTree));
 
 module.exports = {
