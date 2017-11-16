@@ -202,50 +202,26 @@ const getMaxHeight = function (node) {
   if (!node) {
     return 0;
   }
-  console.log(node)
   return 1+ Math.max(getMaxHeight(node.left), getMaxHeight(node.right));
 };
-console.log(getMaxHeight(unbalancedTree.root));
+// console.log(getMaxHeight(unbalancedTree.root));
 
-const checkBalanced = function (tree) {
-  let rootNode = tree.root;
-  let leftLevel = 0;
-  let rightLevel = 0;
-  let result = true;
-  let q = new Queue();
-  function traverser (node) {
-    if (!node) {
-      return 'Tree is empty!';
-    } else {
-      traverser(node.left);
-      leftLevel++;
-      console.log(leftLevel);
-      if (leftLevel >= 2 && leftLevel <= -2) {
-        result = false;
-      }
-      traverser(node.right);
-      leftLevel--;
-      // console.log(leftLevel)
-    }
-  };
-  q.enqueue(rootNode);
-  while (!q.isEmpty()) {
-    currNode = q.dequeue();
-    console.log(currNode)
-    if (!traverser(currNode)) {
-      return false;
-      break;
-    };
-    if (currNode.left) {
-      q.enqueue(currNode.left);
-    }
-    if (currNode.right) {
-      q.enqueue(currNode.right);
-    }
+var smallArr = [5, 6, 3, 2, 1];
+var smallBST = new BinarySearchTree();
+var smallUnbalancedTree = createTree(smallArr, smallBST);
+
+const checkBalanced = function (rootNode) {
+
+  if (!rootNode) {
+    return true;
   }
-  return result;
+  if (Math.abs(getMaxHeight(rootNode.left) - getMaxHeight(rootNode.right)) <= 1 && checkBalanced(rootNode.left) && checkBalanced(rootNode.right)) {
+    return true;
+  } else {
+    return false;
+  }
 };
-// console.log(checkBalanced(unbalancedTree));
+console.log(checkBalanced(testTree.root));
 // console.log(checkBalanced(testTree));
 
 module.exports = {
