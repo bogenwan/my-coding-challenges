@@ -3,6 +3,13 @@ const testBinarySearchTree = require('../../chapter-four-problems/util/BinarySea
 const chapterFourFunctions = require('../../chapter-four-problems/chapter-four-problems.js');
 const testMinimalTree = chapterFourFunctions.minimalTree;
 const testListOfDepth = chapterFourFunctions.listOfDepths;
+const testCheckBalanced = chapterFourFunctions.checkBalanced;
+const testCreateTree = chapterFourFunctions.createTree;
+
+    // let someUnsortedArray = [5, 7, 3, 9, 8, 10, 11, 2, 4, 1, 12];
+    // let someBinaryTree = new testBinarySearchTree
+    // let someTree = testCreateTree(someUnsortedArray, someBinaryTree);
+    // console.log(testCheckBalanced(someTree.root.right.right));
 
 (function () {
   'use strict'
@@ -11,6 +18,7 @@ const testListOfDepth = chapterFourFunctions.listOfDepths;
     let testGraph = new testDirectedGraph();
     let testBinaryTree = new testBinarySearchTree();
     let sortedArray = [1, 2, 3, 4, 5, 6, 7];
+    let unsortedArray = [5, 7, 3, 9, 8, 10, 11, 2, 4, 1, 12];
 
     describe('Question 4.1 Test directed graph and route between node function', function () {
 
@@ -138,6 +146,33 @@ const testListOfDepth = chapterFourFunctions.listOfDepths;
 
       it('Should have value of 7 in the last node of third list in arraylist ', function () {
         expect(testListOfDepth(testBinaryTree)[2].head.next.next.next.value).toBe(7);
+      });
+    });
+
+    describe('Question 4.4 test checkBalanced functionality', function () {
+
+      beforeEach(function () {
+        testCreateTree(unsortedArray, testBinaryTree);
+      });
+
+      afterEach(function () {
+        testBinaryTree.removeAll();
+      });
+
+      it('Should check root node and return false because it is not balanced', function () {
+        expect(testCheckBalanced(testBinaryTree.root)).toBe(false);
+      });
+
+      it('Should check root node.right and return false because it is unbalanced', function () {
+        expect(testCheckBalanced(testBinaryTree.root.right)).toBe(false);
+      });
+
+      it('Should check root node.left and return true because it is balanced', function () {
+        expect(testCheckBalanced(testBinaryTree.root.left)).toBe(true);
+      });
+
+      it('Should check root node.left.right and return true because it have no length', function () {
+        expect(testCheckBalanced(testBinaryTree.root.left.right)).toBe(true);
       });
     });
 

@@ -221,11 +221,13 @@ const checkBalanced = function (rootNode) {
     return false;
   }
 };
-console.log(checkBalanced(testTree.root));
+// console.log(checkBalanced(testTree.root));
 // console.log(checkBalanced(testTree));
 
 module.exports = {
   minimalTree,
   listOfDepths,
+  createTree,
+  checkBalanced,
   createTree,
 };
