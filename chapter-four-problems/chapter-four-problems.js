@@ -224,7 +224,7 @@ const checkBalanced = function (rootNode) {
 // console.log(checkBalanced(testTree.root));
 // console.log(checkBalanced(testTree));
 
-var array2 = [1, 2, 3, 4, 5];
+var array2 = [1, 2, 3, 4, 5, 6];
 var Tree2 = new BinarySearchTree();
 var binaryTree2 = minimalTree(array2, Tree2);
 // console.log(balancedTree2);
@@ -237,15 +237,15 @@ const checkBST = function (rootNode) {
 
   function nodeChecker (currNode) {
     if (currNode.left === null && currNode.right.value > currNode.value) {
+      console.log('empty left')
       return true;
     } else if (currNode.right === null && currNode.left.value < currNode.value) {
+      console.log('empty right')
       return true;
     } else if (currNode.left.value < currNode.value && currNode.right.value > currNode.value) {
+      console.log('not empty')
       return true;
     } else {
-      console.log('Left value ==>', currNode.left.value)
-      console.log('Parent value ==>', currNode.value)
-      console.log('Right value ==>', currNode.right.value)
       return false;
     }
   }
@@ -258,10 +258,16 @@ const checkBST = function (rootNode) {
 };
 console.log(checkBST(binaryTree2.root));
 
+const successor = (node) => {
+
+};
+console.log(successor(binaryTree2.root));
+
 module.exports = {
   minimalTree,
   listOfDepths,
   createTree,
   checkBalanced,
   createTree,
+  checkBST,
 };

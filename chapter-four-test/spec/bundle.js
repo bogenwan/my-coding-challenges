@@ -225,12 +225,52 @@ const checkBalanced = function (rootNode) {
 // console.log(checkBalanced(testTree.root));
 // console.log(checkBalanced(testTree));
 
+var array2 = [1, 2, 3, 4, 5, 6];
+var Tree2 = new BinarySearchTree();
+var binaryTree2 = minimalTree(array2, Tree2);
+// console.log(balancedTree2);
+
+const checkBST = function (rootNode) {
+  if (!rootNode || rootNode.left === null && rootNode.right === null) {
+    console.log('END!!!');
+    return true;
+  }
+
+  function nodeChecker (currNode) {
+    if (currNode.left === null && currNode.right.value > currNode.value) {
+      console.log('empty left')
+      return true;
+    } else if (currNode.right === null && currNode.left.value < currNode.value) {
+      console.log('empty right')
+      return true;
+    } else if (currNode.left.value < currNode.value && currNode.right.value > currNode.value) {
+      console.log('not empty')
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  if (nodeChecker(rootNode) && checkBST(rootNode.left) && checkBST(rootNode.right)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+console.log(checkBST(binaryTree2.root));
+
+const successor = (node) => {
+
+};
+console.log(successor(binaryTree2.root));
+
 module.exports = {
   minimalTree,
   listOfDepths,
   createTree,
   checkBalanced,
   createTree,
+  checkBST,
 };
 },{"./util/BinarySearchTree.js":2,"./util/DirectedGraph.js":3,"./util/LinkedList.js":4,"./util/Queue.js":5,"./util/Stack.js":6}],2:[function(require,module,exports){
 const Node = function (value) {
@@ -649,6 +689,7 @@ const testMinimalTree = chapterFourFunctions.minimalTree;
 const testListOfDepth = chapterFourFunctions.listOfDepths;
 const testCheckBalanced = chapterFourFunctions.checkBalanced;
 const testCreateTree = chapterFourFunctions.createTree;
+const testCheckBST = chapterFourFunctions.checkBST;
 
     // let someUnsortedArray = [5, 7, 3, 9, 8, 10, 11, 2, 4, 1, 12];
     // let someBinaryTree = new testBinarySearchTree
@@ -817,6 +858,21 @@ const testCreateTree = chapterFourFunctions.createTree;
 
       it('Should check root node.left.right and return true because it have no length', function () {
         expect(testCheckBalanced(testBinaryTree.root.left.right)).toBe(true);
+      });
+    });
+
+    describe('Question 4.5 test Validat BST', function () {
+
+      beforeEach(function () {
+        testCreateTree(unsortedArray, testBinaryTree);
+      });
+
+      afterEach(function () {
+        testBinaryTree.removeAll();
+      });
+
+      it('Should check if tree is binary search tree and return true', function () {
+        expect(testCheckBST(testBinaryTree.root)).toBe(true);
       });
     });
 

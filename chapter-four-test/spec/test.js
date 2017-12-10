@@ -5,6 +5,7 @@ const testMinimalTree = chapterFourFunctions.minimalTree;
 const testListOfDepth = chapterFourFunctions.listOfDepths;
 const testCheckBalanced = chapterFourFunctions.checkBalanced;
 const testCreateTree = chapterFourFunctions.createTree;
+const testCheckBST = chapterFourFunctions.checkBST;
 
     // let someUnsortedArray = [5, 7, 3, 9, 8, 10, 11, 2, 4, 1, 12];
     // let someBinaryTree = new testBinarySearchTree
@@ -173,6 +174,21 @@ const testCreateTree = chapterFourFunctions.createTree;
 
       it('Should check root node.left.right and return true because it have no length', function () {
         expect(testCheckBalanced(testBinaryTree.root.left.right)).toBe(true);
+      });
+    });
+
+    describe('Question 4.5 test Validat BST', function () {
+
+      beforeEach(function () {
+        testCreateTree(unsortedArray, testBinaryTree);
+      });
+
+      afterEach(function () {
+        testBinaryTree.removeAll();
+      });
+
+      it('Should check if tree is binary search tree and return true', function () {
+        expect(testCheckBST(testBinaryTree.root)).toBe(true);
       });
     });
 
