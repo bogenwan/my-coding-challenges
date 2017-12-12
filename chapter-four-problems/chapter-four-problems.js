@@ -231,19 +231,15 @@ var binaryTree2 = minimalTree(array2, Tree2);
 
 const checkBST = function (rootNode) {
   if (!rootNode || rootNode.left === null && rootNode.right === null) {
-    console.log('END!!!');
     return true;
   }
 
   function nodeChecker (currNode) {
     if (currNode.left === null && currNode.right.value > currNode.value) {
-      console.log('empty left')
       return true;
     } else if (currNode.right === null && currNode.left.value < currNode.value) {
-      console.log('empty right')
       return true;
     } else if (currNode.left.value < currNode.value && currNode.right.value > currNode.value) {
-      console.log('not empty')
       return true;
     } else {
       return false;
@@ -256,12 +252,31 @@ const checkBST = function (rootNode) {
     return false;
   }
 };
-console.log(checkBST(binaryTree2.root));
+// console.log(checkBST(binaryTree2.root));
 
-const successor = (node) => {
+const successor = (nodeValue, rootNode) => {
+  let queue = new Queue();
+  queue.enqueue(rootNode);
+  while (!queue.isEmpty()) {
+    currNode = queue.dequeue();
+    if (currNode.value === node.value) {
+      return rootNode.left.value;
+    } else if (currNode.left) {
 
+    }
+  }
+  if (rootNode.value === nodeValue) {
+    return rootNode.left.value;
+  }
+  successor(nodeValue, rootNode.left)
+
+  //bfs
+  //check each node with queue
+  //if that node equal to whats passed in
+  //return the next in order node
+  console.log(node)
 };
-console.log(successor(binaryTree2.root));
+console.log(successor(4, binaryTree2.root));
 
 module.exports = {
   minimalTree,
