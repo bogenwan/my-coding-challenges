@@ -245,16 +245,43 @@ const circularList = function (list) {
   return 'This is not a circular linked list!';
 };
 
-// const testListOne = new SinglyList();
-// testListOne.add(7);
-// testListOne.add(1);
-// testListOne.add(6);
-// testListOne.add(4);
-// testListOne.add(5);
-// testListOne.add(4);
-// testListOne.add(7);
+const reverseLinkList = function (list) {
+  // let repeat = list.length;
+  let pre = null;
+  let next = list.head.next;
+  let curr = list.head;
+  // console.log(headPointer, tailPointer);
+  while (curr) {
+    console.log('curr before pointer change', curr)
+    curr.next = pre;
+    console.log('curr after pointer change', curr)
+    pre = curr;
+    console.log('pre after change', pre)
+    curr = next;
+    console.log('assign curr to next', curr)
+    if (next) {
+      next = next.next;
+    } else {
+      list.head = pre;
+      console.log('assigned list.head to curr', list.head)
+    }
+    console.log('next assign to .next', next)
+  }
+  // list.head = curr;
+  // console.log(list.head)
+  return list;
+};
 
-// console.log(testListOne)
+const testListOne = new SinglyList();
+testListOne.add(1);
+testListOne.add(2);
+testListOne.add(3);
+testListOne.add(4);
+testListOne.add(5);
+testListOne.add(6);
+testListOne.add(7);
+
+// console.log(testListOne);
 
 // const testListTwo = new SinglyList();
 // testListTwo.add(5);
@@ -287,5 +314,6 @@ const circularList = function (list) {
 
 // console.log('testListOne ==>', testListOne);
 // console.log(testListOne.findKthToLast(4));
-
+var reList = reverseLinkList(testListOne);
+console.log(reList)
 exports.SinglyList = SinglyList;

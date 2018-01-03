@@ -255,28 +255,27 @@ const checkBST = function (rootNode) {
 // console.log(checkBST(binaryTree2.root));
 
 const successor = (nodeValue, rootNode) => {
+  if (!rootNode) {
+    return;
+  }
   let queue = new Queue();
   queue.enqueue(rootNode);
   while (!queue.isEmpty()) {
     currNode = queue.dequeue();
-    if (currNode.value === node.value) {
-      return rootNode.left.value;
-    } else if (currNode.left) {
-
+    if (currNode.value === nodeValue) {
+      return [rootNode.left, rootNode.right];
+      break;
+    }
+    if (rootNode.left) {
+      queue.enqueue(currNode.left);
+    }
+    if (rootNode.right) {
+      queue.enqueue(currNode.right);
     }
   }
-  if (rootNode.value === nodeValue) {
-    return rootNode.left.value;
-  }
-  successor(nodeValue, rootNode.left)
-
-  //bfs
-  //check each node with queue
-  //if that node equal to whats passed in
-  //return the next in order node
-  console.log(node)
 };
-console.log(successor(4, binaryTree2.root));
+console.log(successor(2, binaryTree2.root));
+
 
 module.exports = {
   minimalTree,
